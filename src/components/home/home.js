@@ -17,6 +17,9 @@ export class home extends Component {
               <Link to="/discover">
                 <li>Discover</li>
               </Link>
+              <Link to="/login">
+                <li>Login</li>
+              </Link>
               <Link to="/signup">
                 <li>Sign Up</li>
               </Link>

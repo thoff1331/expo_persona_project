@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const initialState = {
   username: "",
   email: "",
@@ -9,6 +10,7 @@ const initialState = {
 const SIGN_UP = "SIGN_UP";
 const LOGIN = "LOGIN";
 const ME = "ME";
+//return
 
 export function signUp(username, email, password) {
   return {
@@ -41,8 +43,7 @@ export default function reducer(state = initialState, action) {
     case `${LOGIN}_FULFILLED`:
       return {
         ...state,
-        username: action.payload.data.username,
-        balance: action.payload.data.balance
+        username: action.payload.data.username
       };
 
     case `${ME}_FULFILLED`:
@@ -51,6 +52,7 @@ export default function reducer(state = initialState, action) {
         username: action.payload.data.username,
         balance: action.payload.data.balance
       };
+
     default:
       return state;
   }

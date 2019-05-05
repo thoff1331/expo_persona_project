@@ -32,7 +32,7 @@ export class Signup extends Component {
 
   render() {
     if (this.state.button) {
-      return <Redirect to="/" />;
+      return <Redirect to="/auth/pageSetup" />;
     }
     return (
       <div>

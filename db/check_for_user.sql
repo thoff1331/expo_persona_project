@@ -1,0 +1,1 @@
+SELECT username FROM expo_users WHERE username = $1;

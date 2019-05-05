@@ -1,15 +1,19 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import home from "./components/home/home";
 import discover from "./components/discover/discover";
-import login from "./components/login/login";
 import Signup from "./components/Signup/Signup";
+import Login from "./components/login/login";
+import pageSetup from "./components/pageSetup/pageSetup";
+import displayPage from "./components/displayPage1/displayPage";
 
 export default (
   <Switch>
     <Route exact path="/" component={home} />
     <Route path="/discover" component={discover} />
-    <Route path="/login" component={login} />
-    <Route patch="/signup" component={Signup} />
+    <Route path="/signup" component={Signup} />
+    <Route path="/login" component={Login} />
+    <Route path="/auth/pageSetup" component={pageSetup} />
+    <Route path="/auth/displayPage" component={displayPage} />
   </Switch>
 );
