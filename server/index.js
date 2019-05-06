@@ -5,13 +5,14 @@ const massive = require("massive");
 const session = require("express-session");
 
 app.use(express.json());
-const { signup, login } = require("./controllers/authController");
-
 const {
-  pageSetup,
-  displayPage,
-  checkUser
-} = require("./controllers/pageSetup"); //check//
+  signup,
+  login,
+  infoSetup,
+  pageSetup
+} = require("./controllers/authController");
+
+const { displayPage, checkUser } = require("./controllers/pageSetup"); //check//
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
 
 massive(CONNECTION_STRING)
@@ -38,7 +39,7 @@ app.post("/auth/login", login);
 
 //aboutPage and pageSetup
 
-app.post("/auth/pageSetup", pageSetup);
+app.post("/auth/pagesetup", pageSetup);
 app.get("/auth/displayPage", displayPage);
 app.get("/check/user", checkUser);
 

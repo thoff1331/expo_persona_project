@@ -13,7 +13,7 @@ export class displayPage extends Component {
     };
   }
   componentDidMount() {
-    this.props.updateUser();
+    // this.props.updateUser();
     this.props.checkUser();
     //Make a new action that will update the values in redux
     //Import that function
@@ -22,8 +22,8 @@ export class displayPage extends Component {
     // });
   }
   render() {
-    console.log(this.state.displayPage);
-    console.log(this.props.img);
+    // console.log(this.state.displayPage);
+    // console.log(this.props.img);
     return (
       <div>
         <img src={this.state.img} />

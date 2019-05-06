@@ -1,3 +1,6 @@
-INSERT INTO account (img, name, bio, medium, expo_id) 
-VALUES ($1, $2, $3, $4, $5)
-RETURNING *;
+UPDATE expo_users
+SET img = $1,
+name = $2,
+bio = $3,
+medium = $4
+WHERE username = $5;

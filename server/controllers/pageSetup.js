@@ -1,16 +1,16 @@
-const pageSetup = async (req, res) => {
-  console.log("ID: ", req.session.user.expo_id);
-  const db = req.app.get("db");
-  console.log(req.body.img);
-  const { img, name, bio, medium } = req.body;
-  const result = await db
-    .pageSetup([img, name, bio, medium, req.session.user.expo_id])
-    .catch(err => {
-      console.log(err);
-      res.status(400).json("No Accessing Data");
-    });
-  res.status(200).json(result);
-};
+// const pageSetup = async (req, res) => {
+//   console.log("ID: ", req.session.user.expo_id);
+//   const db = req.app.get("db");
+//   console.log(req.body.img);
+//   const { img, name, bio, medium } = req.body;
+//   const result = await db
+//     .pageSetup([img, name, bio, medium, req.session.user.expo_id])
+//     .catch(err => {
+//       console.log(err);
+//       res.status(400).json("No Accessing Data");
+//     });
+//   res.status(200).json(result);
+// };
 //end
 
 const displayPage = (req, res) => {
@@ -40,7 +40,6 @@ const checkUser = async (req, res) => {
 };
 
 module.exports = {
-  pageSetup,
   displayPage,
   checkUser
 };

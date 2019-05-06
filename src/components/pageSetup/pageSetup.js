@@ -8,11 +8,11 @@ export class pageSetup extends Component {
   constructor() {
     super();
     this.state = {
-      // img: "",
-      // name: "",
-      // bio: "",
-      // medium: ""
-      displayPage: []
+      img: "",
+      name: "",
+      bio: "",
+      medium: ""
+      // displayPage: [] // this edit correct?
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,7 +30,7 @@ export class pageSetup extends Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     this.props.updateUser(
       this.state.img,
       this.state.name,
@@ -40,7 +40,12 @@ export class pageSetup extends Component {
     this.props.history.push("/auth/displayPage");
   }
   render() {
-    console.log("hitt");
+    console.log(
+      this.state.img,
+      this.state.name,
+      this.state.bio,
+      this.state.medium
+    );
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

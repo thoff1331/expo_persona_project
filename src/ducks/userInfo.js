@@ -14,7 +14,7 @@ export function updateUser(img, name, bio, medium) {
   //function updateUser
   return {
     type: UPDATE_USER,
-    payload: axios.post("/auth/pageSetup", {
+    payload: axios.post("/auth/pagesetup", {
       img,
       name,
       bio,
@@ -23,7 +23,6 @@ export function updateUser(img, name, bio, medium) {
   };
 }
 export function checkUser() {
-  console.log("erq");
   return {
     type: CHECK_USER,
     payload: axios.get("/check/user")
