@@ -78,10 +78,10 @@ const checkUser = async (req, res) => {
 };
 const pageSetup = async (req, res) => {
   count++;
-  console.log("COUNT ****: ", count);
+  //console.log("COUNT ****: ", count);
   const db = req.app.get("db");
   const { img, name, bio, medium } = req.body;
-  console.log("Req.body: ", req.body);
+  //console.log("Req.body: ", req.body);
   const result = await db
     .pageSetup([req.body.img, name, bio, medium, req.session.user.username])
     .catch(err => {
@@ -91,10 +91,34 @@ const pageSetup = async (req, res) => {
   res.status(200).json(result);
 };
 
+const displayInfo = (req, res) => {
+  console.log(+req.session.user.expo_id);
+  const db = req.app.get("db");
+  db.display_info(+req.session.user.expo_id).then(info =>
+    res.status(200).json(info)
+  );
+};
+const logout = (req, res) => {
+  req.session.destroy();
+  res.sendStatus(200);
+};
+
+//edit info function
+const editPage = (req, res) => {
+  const { img, name, bio, medium } = req.body;
+  const db = req.app.get("db");
+  db.update_profile([img, name, bio, medium, +req.session.user.expo_id])
+    .then(info => res.status(200).json(info))
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   signup,
   login,
   infoSetup,
   checkUser,
-  pageSetup
+  pageSetup,
+  displayInfo,
+  logout,
+  editPage
 };

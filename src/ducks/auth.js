@@ -9,6 +9,7 @@ const initialState = {
 
 const SIGN_UP = "SIGN_UP";
 const LOGIN = "LOGIN";
+const LOGOUT = "LOGOUT";
 
 export function signUp(username, email, password) {
   return {
@@ -20,6 +21,12 @@ export function login(username, password) {
   return {
     type: LOGIN,
     payload: axios.post("/auth/login", { username, password })
+  };
+}
+export function logout() {
+  return {
+    type: LOGOUT,
+    payload: axios.get("/auth/logout")
   };
 }
 
@@ -35,6 +42,18 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         username: action.payload.data.username
+      };
+    case `${LOGOUT}_PENDING`:
+      return {
+        username: ""
+      };
+    case `${LOGOUT}_FULFILLED`:
+      return {
+        username: ""
+      };
+    case `${LOGOUT}_REJECTED`:
+      return {
+        username: ""
       };
 
     default:

@@ -40,7 +40,7 @@ export default function reducer(state = initialState, action) {
         medium: action.payload.data.medium
       };
     case `${CHECK_USER}_FULFILLED`:
-      console.log(action.payload);
+      //console.log(action.payload);
       return {
         ...state,
         img: action.payload.data.img,

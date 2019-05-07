@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { checkUser, updateUser } from "../../ducks/userInfo";
+import { logout } from "../../ducks/auth";
 import axios from "axios";
 import { tsConstructorType } from "@babel/types";
 
@@ -11,19 +12,34 @@ export class displayPage extends Component {
     this.state = {
       displayPage: []
     };
+    this.logout = this.logout.bind(this);
   }
-  componentDidMount() {
-    // this.props.updateUser();
-    this.props.checkUser();
-    //Make a new action that will update the values in redux
-    //Import that function
-    //Put it in the connect
-    //Calling that function here
-    // });
+
+  componentDidMount(id) {
+    axios.get(`auth/displayInfo/${this.props.match.params.id}`).then(res => {
+      console.log(res.data);
+      this.setState({
+        displayPage: res.data
+      });
+    });
+  }
+  logout() {
+    console.log("hitt");
+    this.props.logout();
   }
   render() {
-    // console.log(this.state.displayPage);
+    console.log(this.state.displayPage);
     // console.log(this.props.img);
+    const mapped = this.state.displayPage.map((val, index) => {
+      return (
+        <div>
+          <img src={val.img} />
+          <h1>{val.name}</h1>
+          <h1>{val.medium}</h1>
+          <h1>{val.bio}</h1>
+        </div>
+      );
+    });
     return (
       <div>
         <img src={this.state.img} />
@@ -33,15 +49,17 @@ export class displayPage extends Component {
         <h3> {this.props.bio}</h3>
         <h3> {this.props.medium}</h3>
         <Link to="/">
-          <button>Log Out</button>
+          <button>Profile</button>
+          <button onClick={this.logout}>Log Out</button>
         </Link>
+        {mapped}
       </div>
     );
   }
 }
 
 const mapStateProps = reduxState => {
-  console.log(reduxState.userInfo);
+  // console.log(reduxState.userInfo);
   return {
     img: reduxState.userInfo.img,
     name: reduxState.userInfo.name,
@@ -52,5 +70,5 @@ const mapStateProps = reduxState => {
 
 export default connect(
   mapStateProps,
-  { updateUser, checkUser }
+  { updateUser, checkUser, logout }
 )(displayPage);

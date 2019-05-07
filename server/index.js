@@ -9,7 +9,9 @@ const {
   signup,
   login,
   infoSetup,
-  pageSetup
+  pageSetup,
+  displayInfo,
+  logout
 } = require("./controllers/authController");
 
 const { displayPage, checkUser } = require("./controllers/pageSetup"); //check//
@@ -42,9 +44,9 @@ app.post("/auth/login", login);
 app.post("/auth/pagesetup", pageSetup);
 app.get("/auth/displayPage", displayPage);
 app.get("/check/user", checkUser);
-
-//portfolio setup
-// app.post('/auth/')
+app.get("/auth/displayInfo/:id", displayInfo);
+app.post("/auth/logout", logout);
+// app.put("/auth/displayPage/:id", editPage); //edit page ask trevor
 
 app.listen(SERVER_PORT, () => {
   console.log(`Listening on port ${SERVER_PORT}`);
