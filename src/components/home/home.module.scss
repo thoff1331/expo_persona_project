@@ -1,0 +1,38 @@
+.title {
+  display: flex;
+  border: 2px solid green;
+  flex-direction: row;
+  flex-wrap: none;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbarMain {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90vw;
+}
+
+.navList {
+  border: 2px solid red;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40vw;
+  a {
+    text-decoration: none;
+  }
+}
+
+.logo {
+  border: 2px solid purple;
+  width: 10vw;
+  height: 7vh;
+  font-size: 40px;
+  a {
+    text-decoration: none;
+  }
+}

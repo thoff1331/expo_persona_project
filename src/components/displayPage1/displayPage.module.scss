@@ -1,0 +1,33 @@
+@import "../../Variables.scss";
+.mainProfile {
+  display: flex;
+  border: 2px solid red;
+}
+
+.profilePic {
+  display: flex;
+  height: 50vh;
+  border: 5px solid blue;
+}
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+}
+.navButtons {
+  border: 2px solid plum;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 50px;
+  width: 280px;
+}
+
+.buttons {
+  width: 100vw;
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

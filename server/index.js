@@ -6,15 +6,19 @@ const session = require("express-session");
 
 app.use(express.json());
 const {
+  editPage,
   signup,
   login,
   infoSetup,
   pageSetup,
   displayInfo,
-  logout
+  logout,
+  displayPage,
+  checkUser
 } = require("./controllers/authController");
 
-const { displayPage, checkUser } = require("./controllers/pageSetup"); //check//
+const { addPortfolio } = require("./controllers/addEditProfile");
+// const { displayPage, checkUser } = require("./controllers/pageSetup"); //check//
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
 
 massive(CONNECTION_STRING)
@@ -44,9 +48,11 @@ app.post("/auth/login", login);
 app.post("/auth/pagesetup", pageSetup);
 app.get("/auth/displayPage", displayPage);
 app.get("/check/user", checkUser);
-app.get("/auth/displayInfo/:id", displayInfo);
-app.post("/auth/logout", logout);
-// app.put("/auth/displayPage/:id", editPage); //edit page ask trevor
+app.get("/auth/displayInfo", displayInfo);
+app.get("/auth/logout", logout);
+app.post("/auth/displayPage", editPage);
+//portfolio
+app.post("/api/portfolio", addPortfolio);
 
 app.listen(SERVER_PORT, () => {
   console.log(`Listening on port ${SERVER_PORT}`);

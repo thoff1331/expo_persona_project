@@ -45,15 +45,18 @@ export default function reducer(state = initialState, action) {
       };
     case `${LOGOUT}_PENDING`:
       return {
-        username: ""
+        username: "",
+        password: ""
       };
     case `${LOGOUT}_FULFILLED`:
       return {
-        username: ""
+        username: "",
+        password: ""
       };
     case `${LOGOUT}_REJECTED`:
       return {
-        username: ""
+        username: "",
+        password: ""
       };
 
     default:

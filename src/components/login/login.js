@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../ducks/auth";
+import Home from "../home/home";
 
 export class Login extends Component {
   constructor(props) {
@@ -44,7 +45,8 @@ export class Login extends Component {
     }
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <Home />
+        <form onSubmit={this.handleSubmit} autoComplete="off">
           <h1>Login</h1>
           <label>
             <input

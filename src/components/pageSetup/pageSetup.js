@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateUser } from "../../ducks/userInfo";
 import axios from "axios";
+import Home from "../home/home";
 
 export class pageSetup extends Component {
   constructor() {
@@ -48,6 +49,7 @@ export class pageSetup extends Component {
     );
     return (
       <div>
+        <Home />
         <form onSubmit={this.handleSubmit}>
           <input
             placeholder="Profile Image"

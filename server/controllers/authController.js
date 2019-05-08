@@ -6,6 +6,7 @@ const signup = async (req, res) => {
 
   const { username, email, password } = req.body;
   const user = await db.check_for_user(username);
+  // should this be expod_id?
   if (user[0]) {
     return res.status(400).json("Username already exists");
   }
@@ -35,7 +36,7 @@ const login = async (req, res) => {
         expo_id: results[0].expo_id
       };
       console.log(results);
-      res.json({ username: results[0].username });
+      res.json(req.session.user);
     } else {
       res.status(403).json("Error: Wrong password");
     }
@@ -83,7 +84,7 @@ const pageSetup = async (req, res) => {
   const { img, name, bio, medium } = req.body;
   //console.log("Req.body: ", req.body);
   const result = await db
-    .pageSetup([req.body.img, name, bio, medium, req.session.user.username])
+    .pageSetup([img, name, bio, medium, req.session.user.username])
     .catch(err => {
       console.log(err);
       res.status(400).json("No Accessing Data");
@@ -99,22 +100,30 @@ const displayInfo = (req, res) => {
   );
 };
 const logout = (req, res) => {
+  console.log("logged out");
   req.session.destroy();
-  res.sendStatus(200);
+  res.sendStatus(200).json("hey");
 };
 
 //edit info function
 const editPage = (req, res) => {
+  console.log(req.session.user.username);
   const { img, name, bio, medium } = req.body;
   const db = req.app.get("db");
-  db.update_profile([img, name, bio, medium, +req.session.user.expo_id])
+  db.update_info([img, name, bio, medium, +req.session.user.expo_id])
     .then(info => res.status(200).json(info))
     .catch(err => console.log(err));
+};
+const displayPage = (req, res) => {
+  console.log("hit");
+  const db = req.app.get("db");
+  db.display_page().then(info => res.status(200).json(info));
 };
 
 module.exports = {
   signup,
   login,
+  displayPage,
   infoSetup,
   checkUser,
   pageSetup,
