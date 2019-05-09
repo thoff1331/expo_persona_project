@@ -1,0 +1,1 @@
+DELETE FROM portfolio WHERE expo_id = $1;

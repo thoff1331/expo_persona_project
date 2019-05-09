@@ -14,6 +14,13 @@ const addPortfolio = async (req, res) => {
   console.log(result);
   res.status(200).json(result);
 };
+const deleteWork = async (req, res) => {
+  const db = req.app.get("db");
+  db.delete_works(req.params.id);
+
+  //sequalstatement
+  res.status(200).json(req.session.user.works);
+};
 
 //double check
 const displayWork = (req, res) => {
@@ -25,5 +32,6 @@ const displayWork = (req, res) => {
 
 module.exports = {
   addPortfolio,
-  displayWork
+  displayWork,
+  deleteWork
 };

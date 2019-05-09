@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addWork } from "../../ducks/portfoliolist";
+import { addWork, deleteWork } from "../../ducks/portfoliolist";
 import axios from "axios";
 
 export class portfolio extends Component {
@@ -49,6 +49,7 @@ export class portfolio extends Component {
           <h1>Artist: {val.artist}</h1>
           <h1>Date: {val.date}</h1>
           <h1>Description: {val.description}</h1>
+          <button onClick={() => this.props.deleteWork(val.expo_id)}>X</button>
         </form>
       );
     });
@@ -110,5 +111,5 @@ const mapStateProps = reduxState => {
 
 export default connect(
   mapStateProps,
-  { addWork }
+  { addWork, deleteWork }
 )(portfolio);

@@ -82,9 +82,17 @@ export class displayPage extends Component {
         <div className={styles.mainProfile}>
           <img className={styles.profilePic} src={val.img} />
           <div className={styles.profileInfo}>
-            <h1>Artist:{val.name}</h1>
-            <h1>Practice:{val.medium}</h1>
-            <h1>Bio:{val.bio}</h1>
+            <div className={styles.buttons}>
+              <button className={styles.navButtons} onClick={this.handleClick}>
+                Edit Profile
+              </button>
+            </div>
+            <h1>Artist:</h1>
+            <p className={styles.name}>{val.name}</p>
+            <h1>Practice:</h1>
+            <p className={styles.name}>{val.medium}</p>
+            <h1>Bio:</h1>
+            <p className={styles.name}>{val.bio}</p>
           </div>
         </div>
       );
@@ -92,11 +100,7 @@ export class displayPage extends Component {
     return (
       <div>
         <Home />
-        <div className={styles.buttons}>
-          <button className={styles.navButtons} onClick={this.handleClick}>
-            Edit Profile
-          </button>
-        </div>
+
         <div>
           {/* {mappedProfile}
           <button onClick={() => this.setState({ showInput: true })}>
@@ -104,7 +108,11 @@ export class displayPage extends Component {
         </button> */}
           {mapped}
           {this.state.showInput ? (
-            <form onSubmit={this.handleSubmit} autoComplete="off">
+            <form
+              onSubmit={this.handleSubmit}
+              className={styles.editForm}
+              autoComplete="off"
+            >
               <img src={this.state.img} />
               <label>Profile Pic</label>
               <input
@@ -128,7 +136,7 @@ export class displayPage extends Component {
                 autoComplete="off"
               />
               <label>Bio</label>
-              <input
+              <textarea
                 onChange={this.handleChange}
                 name="bio"
                 value={this.state.bio}

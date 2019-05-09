@@ -2,17 +2,30 @@
 .mainProfile {
   display: flex;
   border: 2px solid red;
+  height: 80vh;
 }
 
 .profilePic {
   display: flex;
   height: 50vh;
   border: 5px solid blue;
+  margin: 30px;
 }
+// width and heigh should by synced
 .profileInfo {
+  border: 2px solid red;
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
+  h1 {
+    margin: 5px;
+    margin-bottom: 0px;
+  }
+  // margin-left: 40px;
+  // margin-bottom: 2px;
+  .name {
+    font-size: 25px;
+    margin-left: 15px;
+  }
 }
 .navButtons {
   border: 2px solid plum;
@@ -25,9 +38,18 @@
 }
 
 .buttons {
-  width: 100vw;
   border: 2px solid blue;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+.editForm {
+  border: 5px solid green;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  width: 30vw;
+  label {
+    font-size: 35px;
+  }
 }
