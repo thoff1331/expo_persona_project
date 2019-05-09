@@ -6,7 +6,7 @@ import axios from "axios";
 import { tsConstructorType } from "@babel/types";
 import styles from "./displayPage.module.scss";
 import Home from "../home/home";
-import Portfolio from "./../Portfolio/portfolio";
+import Portfolio from "../Portfolio/portfolio";
 
 export class displayPage extends Component {
   constructor() {

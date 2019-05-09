@@ -13,11 +13,11 @@ const {
   pageSetup,
   displayInfo,
   logout,
-  displayPage,
+  // displayPage,
   checkUser
 } = require("./controllers/authController");
 
-const { addPortfolio } = require("./controllers/addEditProfile");
+const { addPortfolio, displayWork } = require("./controllers/addEditProfile");
 // const { displayPage, checkUser } = require("./controllers/pageSetup"); //check//
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
 
@@ -46,13 +46,14 @@ app.post("/auth/login", login);
 //aboutPage and pageSetup
 
 app.post("/auth/pagesetup", pageSetup);
-app.get("/auth/displayPage", displayPage);
+// app.get("/auth/displayPage", displayPage);
 app.get("/check/user", checkUser);
 app.get("/auth/displayInfo", displayInfo);
 app.get("/auth/logout", logout);
 app.post("/auth/displayPage", editPage);
 //portfolio
 app.post("/api/portfolio", addPortfolio);
+app.get("/api/portfolio", displayWork);
 
 app.listen(SERVER_PORT, () => {
   console.log(`Listening on port ${SERVER_PORT}`);

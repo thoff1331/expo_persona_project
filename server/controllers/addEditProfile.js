@@ -11,10 +11,19 @@ const addPortfolio = async (req, res) => {
     date,
     description
   ]);
-
+  console.log(result);
   res.status(200).json(result);
 };
 
+//double check
+const displayWork = (req, res) => {
+  const db = req.app.get("db");
+  db.worksportfolio(req.session.user.expo_id).then(works =>
+    res.status(200).json(works)
+  );
+};
+
 module.exports = {
-  addPortfolio
+  addPortfolio,
+  displayWork
 };

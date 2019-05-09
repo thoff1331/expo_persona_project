@@ -11,18 +11,19 @@ export class portfolio extends Component {
       title: "",
       artist: "",
       date: "",
-      description: "",
-      displayPortfolio: []
+      description: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
+    this.handleSubmit();
     axios.post("/auth/displayPortfolio").then(res => {
       this.setState({
         displayPortfolio: res.data
       });
     });
+    // getProfile(){axios.get("/api/portfolio").then}
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -35,12 +36,24 @@ export class portfolio extends Component {
       this.state.date,
       this.state.description
     );
-    this.props.history.push("/api/portfolio"); //history? ask edson
+    //history? ask edson
   }
   render() {
+    console.log(this.state.description);
+    console.log(this.props);
+    const mapped = this.props.works.map((val, index) => {
+      return (
+        <form>
+          <h1>Work: {val.img}</h1>
+          <h1>Title: {val.title}</h1>
+          <h1>Artist: {val.artist}</h1>
+          <h1>Date: {val.date}</h1>
+          <h1>Description: {val.description}</h1>
+        </form>
+      );
+    });
     return (
       <div>
-        {" "}
         {/* this came out of nowhere ask edson */}
         <form onSubmit={this.handleSubmit} autoComplete="off">
           <nav>
@@ -83,12 +96,17 @@ export class portfolio extends Component {
           />
           <button>POST</button>
         </form>
+        {mapped}
       </div>
     );
   }
 }
 
-const mapStateProps = reduxState => reduxState;
+const mapStateProps = reduxState => {
+  return {
+    works: reduxState.portfoliolist.works
+  };
+};
 
 export default connect(
   mapStateProps,

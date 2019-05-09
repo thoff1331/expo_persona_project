@@ -114,16 +114,16 @@ const editPage = (req, res) => {
     .then(info => res.status(200).json(info))
     .catch(err => console.log(err));
 };
-const displayPage = (req, res) => {
-  console.log("hit");
-  const db = req.app.get("db");
-  db.display_page().then(info => res.status(200).json(info));
-};
+// const displayPage = (req, res) => {
+//   console.log("hit");
+//   const db = req.app.get("db");
+//   db.display_page().then(info => res.status(200).json(info));
+// };
 
 module.exports = {
   signup,
   login,
-  displayPage,
+  // displayPage,
   infoSetup,
   checkUser,
   pageSetup,
