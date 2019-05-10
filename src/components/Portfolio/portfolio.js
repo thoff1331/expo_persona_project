@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { addWork, deleteWork } from "../../ducks/portfoliolist";
 import axios from "axios";
 import styles from "./portfolio.module.scss";
+import { displayPage } from "../displayPage1/displayPage";
+import Home from "./../home/home";
+import { Link } from "react-router-dom";
 
 export class portfolio extends Component {
   constructor() {
@@ -12,36 +15,60 @@ export class portfolio extends Component {
       title: "",
       artist: "",
       date: "",
-      description: ""
+      description: "",
+      displayWork: [],
+      showInput: true
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    // axios.post("/auth/displayPortfolio").then(res => {
-    //   this.setState({
-    //     displayPortfolio: res.data
-    //   });
-    // });
-    // getProfile(){axios.get("/api/portfolio").then}
+    axios.get("/api/portfolio").then(res => {
+      this.setState({
+        displayWork: res.data
+      });
+    });
+  }
+  handleSubmit(e) {
+    this.props
+      .addWork(
+        this.state.img,
+        this.state.title,
+        this.state.artist,
+        this.state.date,
+        this.state.description
+      )
+      .then(res => {
+        this.setState({
+          displayWork: res.data,
+          showInput: false
+        });
+      });
+    this.setState({
+      img: "",
+      title: "",
+      artist: "",
+      date: "",
+      description: ""
+    });
+    this.handleClick();
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  handleSubmit(e) {
-    this.props.addWork(
-      this.state.img,
-      this.state.title,
-      this.state.artist,
-      this.state.date,
-      this.state.description
-    );
+  handleClick(e) {
+    if (!this.state.showInput) {
+      this.setState({ showInput: true });
+    } else {
+      this.setState({ showInput: false });
+    }
   }
   render() {
     console.log(this.props);
     const mapped = this.props.works.map((val, index) => {
       return (
-        <form>
+        <div className={styles.works}>
           <img src={val.img} />
           <h1>Title: {val.title}</h1>
           <h1>Artist: {val.artist}</h1>
@@ -50,16 +77,21 @@ export class portfolio extends Component {
           <button onClick={() => this.props.deleteWork(val.portfolio_id)}>
             X
           </button>
-        </form>
+          <button onClick={this.handleClick}>Edit Work</button>
+        </div>
       );
     });
     return (
       <div>
-        <form
+        <Home />
+        <div
           onSubmit={this.handleSubmit}
           autoComplete="off"
           className={styles.workForm}
         >
+          <Link to="/auth/displayPage">
+            <button>Profile</button>
+          </Link>
           <nav>
             <h1>Portfolio</h1>
           </nav>
@@ -99,8 +131,9 @@ export class portfolio extends Component {
             name="description"
           />
           <button>POST</button>
-        </form>
-        {mapped}
+          <div />
+          {mapped}
+        </div>
       </div>
     );
   }

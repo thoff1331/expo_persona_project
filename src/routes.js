@@ -6,7 +6,6 @@ import Signup from "./components/Signup/Signup";
 import Login from "./components/login/login";
 import pageSetup from "./components/pageSetup/pageSetup";
 import displayPage from "./components/displayPage1/displayPage";
-// import profile_edit from "./components/displayPage1/profile_edit";
 import portfolio from "./components/Portfolio/portfolio";
 
 export default (
@@ -17,7 +16,6 @@ export default (
     <Route path="/login" component={Login} />
     <Route path="/auth/pageSetup" component={pageSetup} />
     <Route path="/auth/displayPage" component={displayPage} />
-    <Route path="/auth/displayPage/profile" component={portfolio} />
-    {/* <Route path="/profileEdit" component={profile_edit} /> */}
+    <Route path="/auth/portfolio" component={portfolio} />
   </Switch>
 );

@@ -7,6 +7,7 @@ import { tsConstructorType } from "@babel/types";
 import styles from "./displayPage.module.scss";
 import Home from "../home/home";
 import Portfolio from "../Portfolio/portfolio";
+import { Link } from "react-router-dom";
 
 export class displayPage extends Component {
   constructor() {
@@ -32,13 +33,8 @@ export class displayPage extends Component {
         displayPage: res.data
       });
     });
-    // this.props.showArist();
     this.props.getWork();
   }
-  // logout() {
-  //   console.log("hitt");
-  //   this.props.logout();
-  // }
   handleSubmit(e) {
     console.log("hello");
     e.preventDefault();
@@ -90,6 +86,9 @@ export class displayPage extends Component {
               <button className={styles.navButtons} onClick={this.handleClick}>
                 Edit Profile
               </button>
+              <Link to="/auth/portfolio">
+                <button className={styles.navButtons}>Portfolio</button>
+              </Link>
             </div>
             <h1>Artist:</h1>
             <p className={styles.name}>{val.name}</p>
@@ -112,12 +111,12 @@ export class displayPage extends Component {
         </button> */}
           {mapped}
           {this.state.showInput ? (
-            <form
+            <div
               onSubmit={this.handleSubmit}
               className={styles.editForm}
               autoComplete="off"
             >
-              <img src={this.state.img} />
+              <img src={this.state.img} className={styles.picEdit} />
               <label>Profile Pic</label>
               <input
                 onChange={this.handleChange}
@@ -147,9 +146,9 @@ export class displayPage extends Component {
                 autoComplete="off"
               />
               <button onClick={this.handleSubmit}>Submit</button>
-            </form>
+            </div>
           ) : null}
-          <Portfolio />
+          {/* <Portfolio /> */}
         </div>
       </div>
     );
