@@ -103,12 +103,7 @@ export class displayPage extends Component {
     return (
       <div>
         <Home />
-
         <div>
-          {/* {mappedProfile}
-          <button onClick={() => this.setState({ showInput: true })}>
-          Edit
-        </button> */}
           {mapped}
           {this.state.showInput ? (
             <div

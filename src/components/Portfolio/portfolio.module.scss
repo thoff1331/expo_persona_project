@@ -1,22 +1,67 @@
-.workForm {
-  border: 2px solid green;
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  height: 80vh;
+// .workForm {
+//   border: 2px solid green;
+//   display: flex;
+//   flex-direction: column;
+//   width: 50vw;
+//   height: 80vh;
 
-  input {
-    margin: 10px;
+//   input {
+//     margin: 10px;
+//   }
+//   img {
+//     display: flex;
+//     justify-content: flex-end;
+//     height: 20vh;
+//   }
+// }
+.works {
+  display: flex;
+  border: 2px solid pink;
+  flex-direction: column;
+  height: 70vh;
+  width: 20vw;
+  display: flex;
+  flex-wrap: wrap;
+  width: 33vw;
+  margin: auto;
+  justify-content: space-around;
+  .workInfo {
+    display: flex;
+    flex-direction: column;
   }
   img {
     display: flex;
-    justify-content: flex-end;
-    height: 20vh;
+    height: 25vh;
   }
 }
+.addWork {
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+}
+.workInput {
+  border: 2px solid violet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30vw;
+  height: 50vh;
+}
+.workInputParent {
+  display: flex;
+  justify-content: center;
+}
 // .works {
+//   border: 3px solid blue;
 //   display: flex;
-//   border: 3px blue;
-//   flex-direction: column;
+//   flex-direction: row;
 //   justify-content: space-between;
+//   height: 30vh;
+//   width: 15vw;
+// }
+
+// .workForm {
+//   display: flex;
+//   border: 1px solid green;
 // }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { signUp } from "../../ducks/auth";
 import Home from "../home/home";
@@ -64,6 +64,7 @@ export class Signup extends Component {
               name="password"
             />
           </label>
+          <Link to="/auth/displayPage" />
           <button>Submit</button>
         </form>
       </div>

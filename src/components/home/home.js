@@ -52,6 +52,14 @@ export class home extends Component {
             </Link>
           </ul>
         </nav>
+        <nav>
+          <Link to="/auth/displayPage">
+            <div className={styles.title}>My Profile</div>
+          </Link>
+          <Link to="/auth/portfolio">
+            <div className={styles.title}>My Works</div>
+          </Link>
+        </nav>
       </div>
     );
   }
