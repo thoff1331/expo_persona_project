@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addWork, deleteWork } from "../../ducks/portfoliolist";
 import axios from "axios";
+import styles from "./portfolio.module.scss";
 
 export class portfolio extends Component {
   constructor() {
@@ -17,12 +18,11 @@ export class portfolio extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    this.handleSubmit();
-    axios.post("/auth/displayPortfolio").then(res => {
-      this.setState({
-        displayPortfolio: res.data
-      });
-    });
+    // axios.post("/auth/displayPortfolio").then(res => {
+    //   this.setState({
+    //     displayPortfolio: res.data
+    //   });
+    // });
     // getProfile(){axios.get("/api/portfolio").then}
   }
   handleChange(e) {
@@ -36,27 +36,30 @@ export class portfolio extends Component {
       this.state.date,
       this.state.description
     );
-    //history? ask edson
   }
   render() {
-    console.log(this.state.description);
     console.log(this.props);
     const mapped = this.props.works.map((val, index) => {
       return (
         <form>
-          <h1>Work: {val.img}</h1>
+          <img src={val.img} />
           <h1>Title: {val.title}</h1>
           <h1>Artist: {val.artist}</h1>
           <h1>Date: {val.date}</h1>
           <h1>Description: {val.description}</h1>
-          <button onClick={() => this.props.deleteWork(val.expo_id)}>X</button>
+          <button onClick={() => this.props.deleteWork(val.portfolio_id)}>
+            X
+          </button>
         </form>
       );
     });
     return (
       <div>
-        {/* this came out of nowhere ask edson */}
-        <form onSubmit={this.handleSubmit} autoComplete="off">
+        <form
+          onSubmit={this.handleSubmit}
+          autoComplete="off"
+          className={styles.workForm}
+        >
           <nav>
             <h1>Portfolio</h1>
           </nav>

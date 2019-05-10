@@ -1,1 +1,3 @@
-DELETE FROM portfolio WHERE expo_id = $1;
+DELETE FROM portfolio WHERE portfolio_id = $1;
+
+SELECT * FROM portfolio;

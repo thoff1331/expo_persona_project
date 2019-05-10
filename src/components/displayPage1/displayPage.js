@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { checkUser, updateUser } from "../../ducks/userInfo";
+import { getWork } from "../../ducks/portfoliolist";
 import axios from "axios";
 import { tsConstructorType } from "@babel/types";
 import styles from "./displayPage.module.scss";
@@ -25,19 +25,22 @@ export class displayPage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount(id) {
+  componentDidMount() {
     axios.get("/auth/displayInfo").then(res => {
       console.log(res.data);
       this.setState({
         displayPage: res.data
       });
     });
+    // this.props.showArist();
+    this.props.getWork();
   }
   // logout() {
   //   console.log("hitt");
   //   this.props.logout();
   // }
   handleSubmit(e) {
+    console.log("hello");
     e.preventDefault();
     axios
       .post("/auth/displayPage", {
@@ -49,6 +52,7 @@ export class displayPage extends Component {
         medium: this.state.medium
       })
       .then(res => {
+        console.log("hitt");
         this.setState({
           displayPage: res.data,
           showInput: false
@@ -164,5 +168,5 @@ const mapStateProps = reduxState => {
 
 export default connect(
   mapStateProps,
-  { updateUser, checkUser }
+  { updateUser, checkUser, getWork }
 )(displayPage);

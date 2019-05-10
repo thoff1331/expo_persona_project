@@ -20,7 +20,8 @@ const {
 const {
   addPortfolio,
   displayWork,
-  deleteWork
+  deleteWork,
+  editPortfolio
 } = require("./controllers/addEditProfile");
 // const { displayPage, checkUser } = require("./controllers/pageSetup"); //check//
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
@@ -59,6 +60,7 @@ app.post("/auth/displayPage", editPage);
 app.post("/api/portfolio", addPortfolio);
 app.get("/api/portfolio", displayWork);
 app.delete("/api/portfolio/:id", deleteWork);
+app.put("/api/portfolio", editPortfolio);
 
 app.listen(SERVER_PORT, () => {
   console.log(`Listening on port ${SERVER_PORT}`);

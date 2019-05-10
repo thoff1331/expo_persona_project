@@ -5,6 +5,7 @@ const initialState = {
 };
 
 const ADD_WORK = "ADD_WORK";
+const GET_WORK = "GET_WORK";
 const DELETE_WORK = "DELETE_WORK";
 
 export function addWork(img, title, artist, date, description) {
@@ -21,14 +22,8 @@ export function addWork(img, title, artist, date, description) {
 }
 export function getWork(img, title, artist, date, description) {
   return {
-    type: ADD_WORK,
-    payload: axios.get("/api/portfolio", {
-      img,
-      title,
-      artist,
-      date,
-      description
-    })
+    type: GET_WORK,
+    payload: axios.get("/api/portfolio")
   };
 }
 export function deleteWork(id) {
@@ -38,8 +33,14 @@ export function deleteWork(id) {
   };
 }
 export default function reducer(state = initialState, action) {
+  console.log(action);
   switch (action.type) {
     case `${ADD_WORK}_FULFILLED`:
+      return {
+        ...state,
+        works: action.payload.data
+      };
+    case `${GET_WORK}_FULFILLED`:
       return {
         ...state,
         works: action.payload.data

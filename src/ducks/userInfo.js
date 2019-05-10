@@ -7,6 +7,7 @@ const initialState = {
   medium: ""
 };
 
+// const SHOW_ARTIST = "SHOW_ARTIST";
 const UPDATE_USER = "UPDATE_USER";
 const CHECK_USER = "CHECK_USER";
 
