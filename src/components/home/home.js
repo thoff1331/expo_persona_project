@@ -50,15 +50,16 @@ export class home extends Component {
             <Link to="/signup">
               <li>Sign Up</li>
             </Link>
+            <Link to="/auth/displayPage">
+              <div className={styles.title}>My Profile</div>
+            </Link>
+            <Link to="/auth/portfolio">
+              <div className={styles.title}>My Works</div>
+            </Link>
+            <Link to="/auth/portfolio/add">
+              <div>ADD</div>
+            </Link>
           </ul>
-        </nav>
-        <nav>
-          <Link to="/auth/displayPage">
-            <div className={styles.title}>My Profile</div>
-          </Link>
-          <Link to="/auth/portfolio">
-            <div className={styles.title}>My Works</div>
-          </Link>
         </nav>
       </div>
     );

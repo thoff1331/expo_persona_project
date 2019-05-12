@@ -7,6 +7,7 @@ import Login from "./components/login/login";
 import pageSetup from "./components/pageSetup/pageSetup";
 import displayPage from "./components/displayPage1/displayPage";
 import portfolio from "./components/Portfolio/portfolio";
+import workAdd from "./components/Portfolio/workAdd";
 
 export default (
   <Switch>
@@ -16,6 +17,7 @@ export default (
     <Route path="/login" component={Login} />
     <Route path="/auth/pageSetup" component={pageSetup} />
     <Route path="/auth/displayPage" component={displayPage} />
+    <Route path="/auth/portfolio/add" component={workAdd} />
     <Route path="/auth/portfolio" component={portfolio} />
   </Switch>
 );

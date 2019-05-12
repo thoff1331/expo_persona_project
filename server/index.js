@@ -21,7 +21,8 @@ const {
   addPortfolio,
   displayWork,
   deleteWork,
-  editPortfolio
+  editPortfolio,
+  discover
 } = require("./controllers/addEditProfile");
 // const { displayPage, checkUser } = require("./controllers/pageSetup"); //check//
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
@@ -44,7 +45,7 @@ app.use(
     }
   })
 );
-
+app.get("/auth/discover", discover);
 app.post("/auth/signup", signup);
 app.post("/auth/login", login);
 

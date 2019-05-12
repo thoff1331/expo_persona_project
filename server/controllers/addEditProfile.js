@@ -16,6 +16,7 @@ const addPortfolio = async (req, res) => {
 };
 
 const deleteWork = async (req, res) => {
+  console.log(+req.params.id);
   const db = req.app.get("db");
   const result = await db.delete_works(req.params.id);
 
@@ -24,16 +25,10 @@ const deleteWork = async (req, res) => {
 };
 
 const editPortfolio = (req, res) => {
+  console.log(req.body);
   const { img, title, artist, date, description } = req.body;
   const db = req.app.get("db");
-  db.portfolio_update([
-    img,
-    title,
-    artist,
-    date,
-    description,
-    +req.session.user.expo_id
-  ])
+  db.portfolio_update([img, title, artist, date, description, 75])
     .then(info => res.status(200).json(info))
     .catch(err => console.log(err));
 };
@@ -45,10 +40,15 @@ const displayWork = (req, res) => {
     res.status(200).json(works)
   );
 };
+const discover = (req, res) => {
+  const db = req.app.get("db");
+  db.all_works().then(works => res.status(200).json(works));
+};
 
 module.exports = {
   addPortfolio,
   displayWork,
   deleteWork,
-  editPortfolio
+  editPortfolio,
+  discover
 };
