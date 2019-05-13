@@ -41,16 +41,7 @@ export class home extends Component {
             <Link to="/discover">
               <li>Discover</li>
             </Link>
-            <Link to="/login">
-              <li>Login</li>
-            </Link>
-            <Link to="/">
-              <li onClick={this.logout}>Log Out</li>
-              {/* edit look of this li */}
-            </Link>
-            <Link to="/signup">
-              <li>Sign Up</li>
-            </Link>
+
             <Link to="/auth/displayPage">
               <li className={styles.title}>My Profile</li>
             </Link>
@@ -59,6 +50,10 @@ export class home extends Component {
             </Link>
             <Link to="/auth/portfolio/add">
               <li>ADD</li>
+            </Link>
+            <Link to="/">
+              <li onClick={this.logout}>Log Out</li>
+              {/* edit look of this li */}
             </Link>
           </ul>
         </nav>

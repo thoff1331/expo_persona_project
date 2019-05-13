@@ -1,1 +1,1 @@
-select * from portfolio;
+select * from portfolio ORDER BY portfolio_id desc;

@@ -45,10 +45,16 @@ const discover = (req, res) => {
   db.all_works().then(works => res.status(200).json(works));
 };
 
+const creators = (req, res) => {
+  const db = req.app.get("db");
+  db.all_artists().then(creators => res.status(200).json(creators));
+};
+
 module.exports = {
   addPortfolio,
   displayWork,
   deleteWork,
   editPortfolio,
-  discover
+  discover,
+  creators
 };

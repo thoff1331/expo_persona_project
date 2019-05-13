@@ -1,0 +1,1 @@
+select * from expo_users;

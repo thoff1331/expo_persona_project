@@ -1,43 +1,41 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Home from "../home/home";
-import Artists from "../discover/artists";
 
 import Axios from "axios";
 
-export class discover extends Component {
+export class artists extends Component {
   constructor() {
     super();
     this.state = {
-      works: []
+      creators: []
     };
   }
   componentDidMount() {
-    Axios.get("/auth/discover").then(res => {
+    Axios.get("/auth/creators").then(res => {
       this.setState({
-        works: res.data
+        creators: res.data
       });
     });
   }
-
   render() {
-    let mapped = this.state.works.map((val, index) => {
+    console.log(this.state.creators);
+    let mapped = this.state.creators.map((val, index) => {
       return (
         <div key={index}>
           <img src={val.img} />
-          <h3> title: {val.title}</h3>
-          <h3> artist: {val.artist}</h3>
-          <h3> date: {val.date}</h3>
+          <h3>Artist: {val.name}</h3>
+          <h3>Practice: {val.medium}</h3>
+          {/* <h3>Bio: {val.bio}</h3> */}
         </div>
       );
     });
-
     return (
       <div>
         <Home />
-        <h1>THIS IS WHERE THE WORKS WILL GO</h1>
-        <Link to="/auth/creators">
-          <h1>Artists</h1>
+        <p> List of Artists</p>
+        <Link to="/discover">
+          <h1>Works</h1>
         </Link>
         {mapped}
       </div>
@@ -45,4 +43,4 @@ export class discover extends Component {
   }
 }
 
-export default discover;
+export default artists;

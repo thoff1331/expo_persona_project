@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../ducks/auth";
 import Home from "../home/home";
+import nav2 from "../home/nav2";
 
 export class Login extends Component {
   constructor(props) {
@@ -65,7 +66,9 @@ export class Login extends Component {
               name="password"
             />
           </label>
-          <button>Submit</button>
+          <Link to="/loggedIn">
+            <button>Submit</button>
+          </Link>
         </form>
       </div>
     );
