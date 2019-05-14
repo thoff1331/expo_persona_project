@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Home from "../home/home";
 import Artists from "../discover/artists";
+import Nav2 from "../home/nav2";
+import styles from "./discover.module.scss";
 
 import Axios from "axios";
 
@@ -11,6 +12,7 @@ export class discover extends Component {
     this.state = {
       works: []
     };
+    this.addLike = this.addLike.bind(this);
   }
   componentDidMount() {
     Axios.get("/auth/discover").then(res => {
@@ -19,23 +21,34 @@ export class discover extends Component {
       });
     });
   }
+  addLike(id) {
+    Axios.get(`/auth/addLike/${id}`).then(res => {
+      console.log("hitt");
+      this.setState({
+        works: res.data
+      });
+      window.location.reload();
+    });
+  }
 
   render() {
+    console.log(this.state.works);
     let mapped = this.state.works.map((val, index) => {
       return (
-        <div key={index}>
+        <div className={styles.links} key={index}>
           <img src={val.img} />
           <h3> title: {val.title}</h3>
           <h3> artist: {val.artist}</h3>
           <h3> date: {val.date}</h3>
+          <h3>Likes: {val.likes}</h3>
+          <h1 onClick={e => this.addLike(val.id)}>🔥</h1>
         </div>
       );
     });
 
     return (
       <div>
-        <Home />
-        <h1>THIS IS WHERE THE WORKS WILL GO</h1>
+        <Nav2 />
         <Link to="/auth/creators">
           <h1>Artists</h1>
         </Link>

@@ -6,7 +6,7 @@ import axios from "axios";
 import { tsConstructorType } from "@babel/types";
 import styles from "./displayPage.module.scss";
 import Home from "../home/home";
-import Portfolio from "../Portfolio/portfolio";
+import Nav2 from "../home/nav2";
 import { Link } from "react-router-dom";
 
 export class displayPage extends Component {
@@ -80,7 +80,9 @@ export class displayPage extends Component {
     const mapped = this.state.displayPage.map((val, index) => {
       return (
         <div className={styles.mainProfile}>
-          <img className={styles.profilePic} src={val.img} />
+          <div className={styles.profilePicDiv}>
+            <img className={styles.profilePic} src={val.img} />
+          </div>
           <div className={styles.profileInfo}>
             <div className={styles.buttons}>
               <button className={styles.navButtons} onClick={this.handleClick}>
@@ -88,6 +90,9 @@ export class displayPage extends Component {
               </button>
               <Link to="/auth/portfolio">
                 <button className={styles.navButtons}>Portfolio</button>
+              </Link>
+              <Link to="/auth/portfolio/add">
+                <button className={styles.navButtons}>Add Work</button>
               </Link>
             </div>
             <h1>Artist:</h1>
@@ -102,7 +107,7 @@ export class displayPage extends Component {
     });
     return (
       <div>
-        <Home />
+        <Nav2 />
         <div>
           {mapped}
           {this.state.showInput ? (

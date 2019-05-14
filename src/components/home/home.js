@@ -38,27 +38,14 @@ export class home extends Component {
         </div>
         <nav className={styles.navbarMain}>
           <ul className={styles.navList}>
-            <Link to="/discover">
-              <li>Discover</li>
+            <Link to="/discover0">
+              <li className={styles.discover}>Discover</li>
             </Link>
             <Link to="/login">
-              <li>Login</li>
-            </Link>
-            <Link to="/">
-              <li onClick={this.logout}>Log Out</li>
-              {/* edit look of this li */}
+              <li className={styles.login}>Login</li>
             </Link>
             <Link to="/signup">
-              <li>Sign Up</li>
-            </Link>
-            <Link to="/auth/displayPage">
-              <li className={styles.title}>My Profile</li>
-            </Link>
-            <Link to="/auth/portfolio">
-              <li className={styles.title}>My Works</li>
-            </Link>
-            <Link to="/auth/portfolio/add">
-              <li>ADD</li>
+              <li className={styles.sUp}>Sign Up</li>
             </Link>
           </ul>
         </nav>

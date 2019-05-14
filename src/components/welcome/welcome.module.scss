@@ -1,0 +1,66 @@
+// div {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   flex-wrap: nowrap;
+// }
+
+.homediv {
+  display: flex;
+  //   flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-around;
+
+  background: white;
+  h1 {
+    margin: 0;
+  }
+}
+.discover {
+  display: flex;
+  height: 20vh;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 80px;
+  padding-right: 10%;
+  color: white;
+  font-weight: 200;
+  background: url("./../pics/ocean.jpg");
+  background-size: cover;
+}
+.share {
+  background: url("./../pics/pattern4.jpg");
+  background-size: cover;
+  display: flex;
+  color: rgb(255, 255, 255);
+  height: 20vh;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 80px;
+  padding-right: 35%;
+  font-weight: 200;
+}
+.create {
+  display: flex;
+  color: rgb(255, 255, 255);
+  justify-content: center;
+  padding-right: 20%;
+  font-size: 80px;
+  font-weight: 200;
+  align-items: center;
+  height: 20vh;
+  background: url("./../pics/pattern2.png");
+  background-size: cover;
+}
+.change {
+  display: flex;
+  color: white;
+  justify-content: flex-start;
+  font-size: 80px;
+  align-items: center;
+  height: 20vh;
+  padding-left: 10%;
+  font-weight: 200;
+  background: url("./../pics/pattern5.jpg");
+  background-size: cover;
+}

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { login } from "../../ducks/auth";
 import Home from "../home/home";
 import nav2 from "../home/nav2";
+import styles from "./../login/login.module.scss";
 
 export class Login extends Component {
   constructor(props) {
@@ -45,31 +46,38 @@ export class Login extends Component {
       //this needs to be redirect somewhere else
     }
     return (
-      <div>
+      <div className={styles.parent}>
         <Home />
-        <form onSubmit={this.handleSubmit} autoComplete="off">
-          <h1>Login</h1>
-          <label>
-            <input
-              placeholder="USERNAME"
-              onChange={this.handleChange}
-              value={this.state.username}
-              name="username"
-            />
-          </label>
+        <div className={styles.div}>
+          <form
+            onSubmit={this.handleSubmit}
+            autoComplete="off"
+            className={styles.form}
+          >
+            <h1>-Login-</h1>
+            <label>
+              <input
+                className={styles.username}
+                placeholder="USERNAME"
+                onChange={this.handleChange}
+                value={this.state.username}
+                name="username"
+              />
+            </label>
 
-          <label>
-            <input
-              placeholder="PASSWORD"
-              onChange={this.handleChange}
-              value={this.state.password}
-              name="password"
-            />
-          </label>
-          <Link to="/loggedIn">
-            <button>Submit</button>
-          </Link>
-        </form>
+            <label>
+              <input
+                placeholder="PASSWORD"
+                onChange={this.handleChange}
+                value={this.state.password}
+                name="password"
+              />
+            </label>
+            {/* <Link to="/auth/displayPage"> */}
+            <button className={styles.submit}>Submit</button>
+            {/* </Link> */}
+          </form>
+        </div>
       </div>
     );
   }

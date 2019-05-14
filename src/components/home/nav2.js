@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import styles from "./home.module.scss";
+import styles from "./nav2.module.scss";
 import { connect } from "react-redux";
 import { logout } from "../../ducks/auth";
 import Axios from "axios";
@@ -39,20 +39,19 @@ export class home extends Component {
         <nav className={styles.navbarMain}>
           <ul className={styles.navList}>
             <Link to="/discover">
-              <li>Discover</li>
+              <li className={styles.discover}>Discover</li>
             </Link>
 
             <Link to="/auth/displayPage">
-              <li className={styles.title}>My Profile</li>
+              <li className={styles.profile}>My Profile</li>
             </Link>
             <Link to="/auth/portfolio">
-              <li className={styles.title}>My Works</li>
-            </Link>
-            <Link to="/auth/portfolio/add">
-              <li>ADD</li>
+              <li className={styles.works}>My Works</li>
             </Link>
             <Link to="/">
-              <li onClick={this.logout}>Log Out</li>
+              <li onClick={this.logout} className={styles.out}>
+                Log Out
+              </li>
               {/* edit look of this li */}
             </Link>
           </ul>

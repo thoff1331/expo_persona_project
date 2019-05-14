@@ -4,8 +4,8 @@ import { addWork, deleteWork } from "../../ducks/portfoliolist";
 import axios from "axios";
 import styles from "./portfolio.module.scss";
 import { displayPage } from "../displayPage1/displayPage";
-import Home from "./../home/home";
 import { Link } from "react-router-dom";
+import Nav2 from "../home/nav2";
 
 export class portfolio extends Component {
   constructor() {
@@ -134,7 +134,7 @@ export class portfolio extends Component {
     });
     return (
       <div>
-        <Home />
+        <Nav2 />
         <nav className={styles.addWork}>
           <h1>Portfolio</h1>
         </nav>
@@ -143,7 +143,19 @@ export class portfolio extends Component {
           autoComplete="off"
           className={styles.workForm}
         >
-          <div className={styles.workInputParent} />
+          <div className={styles.workInputParent}>
+            <nav>
+              {" "}
+              <ul>
+                <Link to="/auth/portfolio/add">
+                  <li className={styles.navButtons}>ADD</li>
+                </Link>
+                <Link to="/auth/displayPage">
+                  <li>PROFILE</li>
+                </Link>
+              </ul>
+            </nav>
+          </div>
         </div>
         {mapped}
       </div>

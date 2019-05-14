@@ -1,43 +1,46 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import Home from "../home/home";
+import Artists from "../discover/artists";
 import Nav2 from "../home/nav2";
 import Home from "../home/home";
-
-import styles from "./artists.module.scss";
+import styles from "./discover.module.scss";
 
 import Axios from "axios";
 
-export class artists extends Component {
+export class discover extends Component {
   constructor() {
     super();
     this.state = {
-      creators: []
+      works: []
     };
   }
   componentDidMount() {
-    Axios.get("/auth/creators").then(res => {
+    Axios.get("/auth/discover").then(res => {
       this.setState({
-        creators: res.data
+        works: res.data
       });
     });
   }
+
   render() {
-    console.log(this.state.creators);
-    let mapped = this.state.creators.map((val, index) => {
+    let mapped = this.state.works.map((val, index) => {
       return (
-        <div key={index}>
+        <div className={styles.links} key={index}>
           <img src={val.img} />
-          <h3>Artist: {val.name}</h3>
-          <h3>Practice: {val.medium}</h3>
-          {/* <h3>Bio: {val.bio}</h3> */}
+          <div className={styles.info}>
+            <h3> title: {val.title}</h3>
+            <h3> artist: {val.artist}</h3>
+            <h3> date: {val.date}</h3>
+            <h3>Likes: {val.likes}</h3>
+          </div>
         </div>
       );
     });
+
     return (
       <div>
         <Home />
-        <p> List of Artists</p>
+        {/* <h1>THIS IS WHERE THE WORKS WILL GO</h1> */}
         <div className={styles.creators}>
           <Link to="/discover0">
             <h1>Works</h1>
@@ -52,4 +55,4 @@ export class artists extends Component {
   }
 }
 
-export default artists;
+export default discover;

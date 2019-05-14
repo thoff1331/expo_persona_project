@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Home from "../home/home";
+import Nav2 from "../home/nav2";
 import { connect } from "react-redux";
 import { addWork, deleteWork } from "../../ducks/portfoliolist";
 import axios from "axios";
@@ -55,7 +55,7 @@ export class workAdd extends Component {
   render() {
     return (
       <div>
-        <Home />
+        <Nav2 />
         <p>Add WORK aND EDIT WORK</p>
         <div className={styles.workInputParent}>
           <div className={styles.workInput}>

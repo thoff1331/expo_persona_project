@@ -1,21 +1,29 @@
 @import "../../Variables.scss";
 .mainProfile {
   display: flex;
-  border: 2px solid red;
+
   height: 80vh;
 }
-
+// background: url("./../pics/pattern6.png");
+// background-size: cover;
+// height: 100vh;
 .profilePic {
   display: flex;
-  height: 50vh;
-  border: 5px solid blue;
-  margin: 30px;
+  background-position: center;
+}
+.profilePicDiv {
+  background-position: center;
+  background-size: cover;
+  width: 300vw;
+  background: cover;
+  background: url("./../pics/pattern8.png");
 }
 // width and heigh should by synced
 .profileInfo {
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
+  margin: 5%;
+  margin-top: 1%;
   h1 {
     margin: 5px;
     margin-bottom: 0px;
@@ -28,7 +36,7 @@
   }
 }
 .navButtons {
-  border: 2px solid plum;
+  border: 2px solid rgb(160, 221, 213);
   display: flex;
   flex-direction: row;
   justify-content: center;
