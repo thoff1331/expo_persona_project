@@ -27,7 +27,7 @@ export class discover extends Component {
       this.setState({
         works: res.data
       });
-      window.location.reload();
+      //  window.location.reload();
     });
   }
 
@@ -41,7 +41,7 @@ export class discover extends Component {
           <h3> artist: {val.artist}</h3>
           <h3> date: {val.date}</h3>
           <h3>Likes: {val.likes}</h3>
-          <h1 onClick={e => this.addLike(val.id)}>🔥</h1>
+          <h1 onClick={e => this.addLike(val.portfolio_id)}>🔥</h1>
         </div>
       );
     });

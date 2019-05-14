@@ -50,9 +50,9 @@ const creators = (req, res) => {
   db.all_artists().then(creators => res.status(200).json(creators));
 };
 const addLikes = (req, res) => {
-  console.log(+req.params.id);
+  console.log(+req.params.portfolio_id);
   const db = req.app.get("db");
-  db.add_like(84).then(likes => res.status(200).json(likes));
+  db.add_like(+req.params.id).then(likes => res.status(200).json(likes));
 };
 
 module.exports = {
