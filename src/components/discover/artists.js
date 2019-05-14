@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import Nav2 from "../home/nav2";
 import Home from "../home/home";
 
-import styles from "./artists.module.scss";
+// import styles from "./artists.module.scss";
+import styles from "./discover.module.scss";
 
 import Axios from "axios";
 
@@ -37,16 +38,16 @@ export class artists extends Component {
     return (
       <div>
         <Home />
-        <p> List of Artists</p>
+
         <div className={styles.creators}>
-          <Link to="/discover0">
-            <h1>Works</h1>
+          <Link className={styles.linkto} to="/discover0">
+            <button className={styles.button}>Works</button>
           </Link>
-          <Link to="/auth/creators">
-            <h1>Artists</h1>
+          <Link to="/auth/creators" className={styles.linkto}>
+            <button className={styles.button}>Artists</button>
           </Link>
         </div>
-        {mapped}
+        <div className={styles.allMapped}>{mapped}</div>
       </div>
     );
   }

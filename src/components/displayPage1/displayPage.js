@@ -93,6 +93,9 @@ export class displayPage extends Component {
               </Link>
               <Link to="/auth/portfolio/add">
                 <button className={styles.navButtons}>Add Work</button>
+              </Link>{" "}
+              <Link to="/auth/portfolio/add">
+                <button className={styles.navButtons}>Contact</button>
               </Link>
             </div>
             <h1>Artist:</h1>

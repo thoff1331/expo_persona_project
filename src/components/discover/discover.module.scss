@@ -5,38 +5,99 @@
   width: 0vw;
   flex-direction: column;
   flex-wrap: wrap;
-  //   justify-content: center;
-  //   align-content: center;
-  //   align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.418);
+  margin: 2%;
   img {
     height: 100%;
     margin: 10px;
   }
-  .info {
-    flex-direction: column;
-    justify-content: flex-end;
-    align-content: flex-end;
-    align-items: flex-end;
+}
+.info {
+  // border: 2px solid green;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: flex-end;
+  align-items: flex-end;
+  width: 15vw;
+  // border: 2px solid green;
+  margin-top: 22px;
+  width: 20vw;
+  height: 40vh;
+
+  h2 {
+    font-weight: 500;
+    display: flex;
+    margin-left: 22px;
+  }
+  .logo {
+    border: 2px solid red;
+    height: 5vh;
+  }
+  .circleButton {
+    margin-top: 2%;
+    // margin-right: -10%;
+    font-weight: 400;
+    opacity: 0.8;
+    border: 2px solid red;
   }
 }
+
+.allMapped {
+  // border: 3px solid rgb(113, 255, 57);
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  margin: auto;
+  // justify-content: space-between;
+}
+
+.kingDerek {
+  border: 0.1px solid rgba(19, 19, 19, 0.084);
+  width: 49.5vw;
+  // margin-left: -2%;
+}
+
 .creators {
+  border-top: 1px solid rgba(180, 85, 85, 0.335);
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: auto;
+  justify-content: space-around;
+  padding-top: 15px;
+  flex-direction: row;
+  justify-content: flex-end;
+  text-decoration: none;
+  height: 10vh;
+  .linkto {
+    text-decoration: none;
+    border-left: none;
+  }
+
+  background: url("./../pics/pattern11.jpg");
+  border-bottom: 1px solid rgba(0, 0, 0, 0.486);
+  // opacity: 0.8;
+}
+
+.button {
+  background: rgb(26, 26, 26);
+  width: 20vw;
   display: flex;
   justify-content: center;
-  justify-content: space-around;
-  border: 2px solid pink;
+  align-content: center;
+  align-items: center;
+  margin-top: 3%;
+  // margin-right: 5%;
+  // border-radius: 10px;
+  font-size: 4.4vh;
+  // borderleft: 0.1px solid rgba(255, 255, 255, 0.274);
+  font-weight: 200;
 
-  background: url("./../pics/pattern6.png");
-  h1 {
-    width: 15vw;
-    height: 8vh;
-    display: flex;
-    justify-content: center;
-    border-radius: 10px;
-    margin-top: 15%;
-    font-size: 5vh;
-    font-weight: 400;
-    color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.822);
+  text-decoration: none;
+}
 
-    text-decoration: none;
-  }
+button {
+  border: 1px solid rgba(255, 255, 255, 0.246);
+  margin-right: 10px;
 }

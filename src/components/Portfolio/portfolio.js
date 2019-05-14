@@ -17,8 +17,8 @@ export class portfolio extends Component {
       date: "",
       description: "",
       displayWork: [],
-      showInput: true,
-      editForm: true
+      showInput: false,
+      editForm: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -136,15 +136,14 @@ export class portfolio extends Component {
       <div>
         <Nav2 />
         <nav className={styles.addWork}>
-          <h1>Portfolio</h1>
-        </nav>
-        <div
-          onSubmit={this.handleSubmit}
-          autoComplete="off"
-          className={styles.workForm}
-        >
-          <div className={styles.workInputParent}>
-            <nav>
+          <h1 className={styles.portfolio}>Portfolio</h1>
+
+          <div
+            onSubmit={this.handleSubmit}
+            autoComplete="off"
+            className={styles.workForm}
+          >
+            <div className={styles.workInputParent}>
               {" "}
               <ul>
                 <Link to="/auth/portfolio/add">
@@ -154,9 +153,9 @@ export class portfolio extends Component {
                   <li>PROFILE</li>
                 </Link>
               </ul>
-            </nav>
+            </div>
           </div>
-        </div>
+        </nav>
         {mapped}
       </div>
     );

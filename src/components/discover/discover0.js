@@ -4,6 +4,7 @@ import Artists from "../discover/artists";
 import Nav2 from "../home/nav2";
 import Home from "../home/home";
 import styles from "./discover.module.scss";
+import logo from "../pics/like.png";
 
 import Axios from "axios";
 
@@ -25,13 +26,20 @@ export class discover extends Component {
   render() {
     let mapped = this.state.works.map((val, index) => {
       return (
-        <div className={styles.links} key={index}>
-          <img src={val.img} />
-          <div className={styles.info}>
-            <h3> title: {val.title}</h3>
-            <h3> artist: {val.artist}</h3>
-            <h3> date: {val.date}</h3>
-            <h3>Likes: {val.likes}</h3>
+        <div className={styles.kingDerek}>
+          <div className={styles.derek} key={index}>
+            <div className={styles.links}>
+              <img src={val.img} />
+              <div className={styles.info}>
+                <h2> Title: {val.title}</h2>
+                <h2> Artist: {val.artist}</h2>
+                <h2> Date: {val.date}</h2>
+                <h2 className={styles.emoji}>
+                  <img className={styles.logo} src={logo} />
+                  <h2 className={styles.circleButton}>{val.likes}</h2>
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
       );
@@ -42,14 +50,14 @@ export class discover extends Component {
         <Home />
         {/* <h1>THIS IS WHERE THE WORKS WILL GO</h1> */}
         <div className={styles.creators}>
-          <Link to="/discover0">
-            <h1>Works</h1>
+          <Link className={styles.linkto} to="/discover0">
+            <button className={styles.button}>Works</button>
           </Link>
-          <Link to="/auth/creators">
-            <h1>Artists</h1>
+          <Link className={styles.linkto} to="/auth/creators">
+            <button className={styles.button}>Artists</button>
           </Link>
         </div>
-        {mapped}
+        <div className={styles.allMapped}>{mapped}</div>
       </div>
     );
   }

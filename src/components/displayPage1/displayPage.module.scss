@@ -10,6 +10,7 @@
 .profilePic {
   display: flex;
   background-position: center;
+  border: 2px solid red;
 }
 .profilePicDiv {
   background-position: center;
@@ -42,7 +43,8 @@
   justify-content: center;
   flex-wrap: wrap;
   height: 50px;
-  width: 280px;
+  width: 200px;
+  margin-left: -20%;
 }
 
 .buttons {
