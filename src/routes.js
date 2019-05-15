@@ -12,12 +12,14 @@ import portfolio from "./components/Portfolio/portfolio";
 import workAdd from "./components/Portfolio/workAdd";
 import nav2 from "./components/home/nav2";
 import welcome from "./components/welcome/welcome";
+import Contact from "./components/contactForm/contactForm";
 
 export default (
   <Switch>
     <Route exact path="/welcome" component={welcome} />
     <Route exact path="/" component={welcome} />
     <Route exact path="/discover" component={discover} />
+    <Route path="/contact" component={Contact} />
     <Route path="/discover0" component={discover0} />
     <Route path="/signup" component={Signup} />
     <Route path="/login" component={Login} />

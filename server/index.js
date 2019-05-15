@@ -10,15 +10,19 @@ const bluebird = require("bluebird");
 const multiparty = require("multiparty");
 
 AWS.config.update({
+  // region: "us-east-2",
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
 
+const s3bucket = process.env.S3_BUCKET;
 // configure AWS to work with promises
 AWS.config.setPromisesDependency(bluebird);
 
 // create S3 instance
 const s3 = new AWS.S3();
+
+const { addContactForm } = require("./controllers/contactForm");
 
 app.use(express.json());
 const {
@@ -82,6 +86,8 @@ app.get("/api/portfolio", displayWork);
 app.delete("/api/portfolio/:id", deleteWork);
 app.put("/api/portfolio", editPortfolio);
 app.get("/auth/addLike/:id", addLikes);
+// Contact Form
+app.post("/api/contact", addContactForm);
 
 const uploadFile = (buffer, name, type) => {
   const params = {
@@ -105,11 +111,18 @@ app.post("/auth/picture", (request, response) => {
       const timestamp = Date.now().toString();
       const fileName = `bucketFolder/${timestamp}-lg`;
       const data = await uploadFile(buffer, fileName, type);
+      console.log(`data ${data}`);
       return response.status(200).send(data);
     } catch (error) {
       return response.status(400).send(error);
     }
   });
+});
+const configureRoutes = require("./routes");
+configureRoutes(app);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
 app.listen(SERVER_PORT, () => {

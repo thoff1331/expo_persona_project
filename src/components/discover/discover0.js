@@ -5,6 +5,7 @@ import Nav2 from "../home/nav2";
 import Home from "../home/home";
 import styles from "./discover.module.scss";
 import logo from "../pics/like.png";
+import StripeBtn from "../Stripe.js";
 
 import Axios from "axios";
 
@@ -37,6 +38,7 @@ export class discover extends Component {
                 <h2 className={styles.emoji}>
                   <img className={styles.logo} src={logo} />
                   <h2 className={styles.circleButton}>{val.likes}</h2>
+                  <StripeBtn />
                 </h2>
               </div>
             </div>

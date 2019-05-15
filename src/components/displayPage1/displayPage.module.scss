@@ -10,7 +10,6 @@
 .profilePic {
   display: flex;
   background-position: center;
-  border: 2px solid red;
 }
 .profilePicDiv {
   background-position: center;
@@ -37,28 +36,45 @@
   }
 }
 .navButtons {
-  border: 2px solid rgb(160, 221, 213);
+  // border: 2px solid rgb(160, 221, 213);
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  height: 50px;
-  width: 200px;
-  margin-left: -20%;
+  height: 7vh;
+  width: 12vw;
+  opacity: 0.8;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  font-weight: 200;
+
+  // margin-left: -20%;
 }
 
 .buttons {
-  border: 2px solid blue;
+  // border: 2px solid blue;
+  background: url("./../pics//pattern11.jpg");
   display: flex;
+  margin-left: -5%;
+  width: 57vw;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
+  .linkto {
+    text-decoration: none;
+    border-left: none;
+  }
 }
 .editForm {
-  border: 5px solid green;
+  margin-top: 200px;
+  margin-left: 20px;
+  border: 2px solid rgba(48, 48, 48, 0.33);
+  font-weight: 200;
   display: flex;
   flex-direction: column;
   height: 60vh;
-  width: 30vw;
+  width: 35vw;
   label {
     font-size: 35px;
   }

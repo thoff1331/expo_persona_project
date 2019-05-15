@@ -18,16 +18,18 @@ export class portfolio extends Component {
       description: "",
       displayWork: [],
       showInput: false,
-      editForm: false
+      editForm: false,
+      file: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
     this.editPortfolio = this.editPortfolio.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
   }
   editPortfolio() {
     axios
-      .put("/api/portfolio/", {
+      .put("/api/portfolio", {
         img: this.state.img,
 
         title: this.state.title,
@@ -43,22 +45,23 @@ export class portfolio extends Component {
       });
   }
 
-  handleSubmit(e) {
-    this.props
-      .addWork(
-        this.state.img,
-        this.state.title,
-        this.state.artist,
-        this.state.date,
-        this.state.description
-      )
-      .then(res => {
-        this.setState({
-          displayWork: res.data,
-          showInput: false
-        });
-      });
-  }
+  // handleSubmit(e) {
+  //   this.props
+  //     .addWork(
+  //       this.state.img,
+  //       this.state.title,
+  //       this.state.artist,
+  //       this.state.date,
+  //       this.state.description
+  //     )
+  //     .then(res => {
+  //       this.setState({
+  //         displayWork: res.data,
+  //         showInput: false
+  //       });
+  //     });
+  //  }
+
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -70,17 +73,43 @@ export class portfolio extends Component {
     }
   }
   editWork = () => {
-    this.setState({
-      editForm: true
-    });
+    this.setState({});
+  };
+  handleFileUpload(e) {
+    this.setState({ file: e.target.files });
+    console.log(e.target);
+  }
+  submitFile = event => {
+    event.preventDefault();
+    console.log("hitt");
+    const formData = new FormData();
+    formData.append("file", this.state.file[0]);
+    axios
+      .post("/auth/picture", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        console.log(response);
+        this.setState(
+          {
+            img: response.data.Location
+          },
+          () => this.editPortfolio()
+        );
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
   render() {
-    console.log(this.props);
+    console.log(this.state.displayWork);
     const mapped = this.props.works.map((val, index) => {
       return (
         <div key={index}>
           <div className={styles.works}>
-            <img src={val.img} />
+            <img className={styles.picture} src={val.img} />
             <h1>Title: {val.title}</h1>
             <h1>Artist: {val.artist}</h1>
             <h1>Date: {val.date}</h1>
@@ -88,15 +117,19 @@ export class portfolio extends Component {
             <button onClick={() => this.props.deleteWork(val.portfolio_id)}>
               X
             </button>
-            <button onClick={this.editWork}>Edit Work</button>
+            <button onClick={this.editPortfolio(val.portfolio_id)}>
+              Update
+            </button>
+            {/* <button onClick={this.editWork}>Edit Work</button> */}
 
-            <form onSubmit={this.editPortfolio}>
+            <form className={styles.editWork} onSubmit={this.submitFile}>
               <input
                 name="img"
-                onChange={this.handleChange}
-                value={this.setState.img}
+                onChange={this.handleFileUpload}
+                // value={this.setState.img}
                 autoComplete="off"
                 placeholder="image"
+                type="file"
               />
               <input
                 name="title"
@@ -126,7 +159,6 @@ export class portfolio extends Component {
                 autoComplete="off"
                 placeholder="description"
               />
-              <button onClick={this.editPortfolio}>Update</button>
             </form>
           </div>
         </div>
@@ -136,26 +168,22 @@ export class portfolio extends Component {
       <div>
         <Nav2 />
         <nav className={styles.addWork}>
-          <h1 className={styles.portfolio}>Portfolio</h1>
-
-          <div
-            onSubmit={this.handleSubmit}
-            autoComplete="off"
-            className={styles.workForm}
-          >
-            <div className={styles.workInputParent}>
-              {" "}
-              <ul>
-                <Link to="/auth/portfolio/add">
-                  <li className={styles.navButtons}>ADD</li>
-                </Link>
-                <Link to="/auth/displayPage">
-                  <li>PROFILE</li>
-                </Link>
-              </ul>
-            </div>
-          </div>
+          <Link className={styles.Link} to="/auth/displayPage">
+            <h1 className={styles.navButtons}>PROFILE</h1>
+          </Link>
+          <Link className={styles.Link} to="/auth/portfolio/add">
+            <h1 className={styles.navButtons}>ADD</h1>
+          </Link>
         </nav>
+        <div
+          onSubmit={this.handleSubmit}
+          autoComplete="off"
+          className={styles.workForm}
+        >
+          <h1 className={styles.portfolio}>Portfolio</h1>
+          <div className={styles.workInputParent}> </div>
+        </div>
+
         {mapped}
       </div>
     );

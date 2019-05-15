@@ -88,13 +88,13 @@ export class displayPage extends Component {
               <button className={styles.navButtons} onClick={this.handleClick}>
                 Edit Profile
               </button>
-              <Link to="/auth/portfolio">
+              <Link className={styles.linkto} to="/auth/portfolio">
                 <button className={styles.navButtons}>Portfolio</button>
               </Link>
-              <Link to="/auth/portfolio/add">
+              <Link className={styles.linkto} to="/auth/portfolio/add">
                 <button className={styles.navButtons}>Add Work</button>
               </Link>{" "}
-              <Link to="/auth/portfolio/add">
+              <Link className={styles.linkto} to="/contact">
                 <button className={styles.navButtons}>Contact</button>
               </Link>
             </div>
