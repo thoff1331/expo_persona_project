@@ -41,14 +41,30 @@
 }
 .workInput {
   margin-top: 100px;
-  border: 4px solid violet;
+  border: 1px solid rgba(0, 0, 0, 0.481);
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   flex-direction: column;
   width: 30vw;
-  height: 50vh;
+  height: 60vh;
+  input {
+    height: 5vh;
+    width: 15vw;
+    display: flex;
+    align-content: center;
+    align-items: center;
+  }
+  button {
+    font-size: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.445);
+    margin-top: 5%;
+    width: 100%;
+    // .post {
+    //   width: 40%;
+    // }
+  }
 }
 .workInputParent {
   display: flex;

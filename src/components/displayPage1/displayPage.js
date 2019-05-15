@@ -94,9 +94,9 @@ export class displayPage extends Component {
               <Link className={styles.linkto} to="/auth/portfolio/add">
                 <button className={styles.navButtons}>Add Work</button>
               </Link>{" "}
-              <Link className={styles.linkto} to="/contact">
+              {/* <Link className={styles.linkto} to="/contact">
                 <button className={styles.navButtons}>Contact</button>
-              </Link>
+              </Link> */}
             </div>
             <h1>Artist:</h1>
             <p className={styles.name}>{val.name}</p>

@@ -47,6 +47,9 @@ export class home extends Component {
             <Link to="/signup">
               <li className={styles.sUp}>Sign Up</li>
             </Link>
+            <Link to="/Contact">
+              <li className={styles.contact}>Contact</li>
+            </Link>
           </ul>
         </nav>
       </div>

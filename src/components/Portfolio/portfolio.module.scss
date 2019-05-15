@@ -1,17 +1,35 @@
+.background {
+  // background: url("../pics/pattern11.jpg");
+  // background-size: cover;
+  background: rgb(220, 220, 220);
+}
 .works {
   display: flex;
-  border: 2px solid pink;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.433);
   flex-direction: column;
-  height: 70vh;
+  height: 85vh;
   width: 50vw;
+  margin-left: 25%;
+  h1 {
+    margin-top: 5px;
 
-  // img {
-  //   max-height: 25%;
-  // }
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    margin-top: 5%;
+    height: 30vh;
+    width: 20vw;
+    margin-left: 30%;
+  }
 }
 .picture {
   height: 30vh;
   width: 20vw;
+  display: flex;
+  justify-content: center;
 }
 .addWork {
   display: flex;
@@ -63,4 +81,7 @@
 }
 .Link {
   text-decoration: none;
+  justify-content: center;
+  margin-left: 5%;
+  // margin-right: -5%;
 }

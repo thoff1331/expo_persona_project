@@ -6,6 +6,7 @@ import Home from "../home/home";
 
 // import styles from "./artists.module.scss";
 import styles from "./discover.module.scss";
+import style from "../discover/artists.module.scss";
 
 import Axios from "axios";
 
@@ -28,10 +29,14 @@ export class artists extends Component {
     let mapped = this.state.creators.map((val, index) => {
       return (
         <div key={index}>
-          <img src={val.img} />
-          <h3>Artist: {val.name}</h3>
-          <h3>Practice: {val.medium}</h3>
-          {/* <h3>Bio: {val.bio}</h3> */}
+          <div className={style.artists}>
+            <div className={style.map}>
+              <img src={val.img} />
+              <h3>Artist: {val.name}</h3>
+              <h3>Practice: {val.medium}</h3>
+              {/* <h3>Bio: {val.bio}</h3> */}
+            </div>
+          </div>
         </div>
       );
     });

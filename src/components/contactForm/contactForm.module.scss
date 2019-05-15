@@ -1,0 +1,33 @@
+.contact {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 8%;
+  // background: url("../pics/pattern11.jpg");
+}
+// .formform {
+//   background: url("../pics/pattern11.jpg");
+// }
+// .parent {
+//   background: solid black;
+// }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 50vh;
+  width: 40vw;
+  border: 1px solid black;
+  input {
+    width: 30vw;
+    height: 5vh;
+  }
+  textarea {
+    height: 10vh;
+    width: 30vw;
+  }
+}

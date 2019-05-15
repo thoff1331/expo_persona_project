@@ -21,7 +21,7 @@ const StripeBtn = () => {
   };
   return (
     <StripeCheckout
-      label="Upgrade" //Component button text
+      label="Purchase Print" //Component button text
       name="Expo" //Modal Header
       description=""
       panelLabel="Submit" //Submit button in modal

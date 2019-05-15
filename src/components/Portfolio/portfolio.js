@@ -107,9 +107,9 @@ export class portfolio extends Component {
     console.log(this.state.displayWork);
     const mapped = this.props.works.map((val, index) => {
       return (
-        <div key={index}>
+        <div key={index} className={styles.background}>
           <div className={styles.works}>
-            <img className={styles.picture} src={val.img} />
+            <img src={val.img} />
             <h1>Title: {val.title}</h1>
             <h1>Artist: {val.artist}</h1>
             <h1>Date: {val.date}</h1>

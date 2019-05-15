@@ -1,7 +1,33 @@
 .creators {
   display: flex;
   justify-content: center;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 2px solid pink;
   background: blue;
+}
+.artists {
+  width: 50vw;
+}
+
+.map {
+  display: flex;
+  justify-content: space-between;
+  width: 45vw;
+  margin-top: 10%;
+  flex-direction: column;
+  margin-left: 5%;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  img {
+    height: 50vh;
+    width: 20vw;
+    margin-top: 10%;
+
+    margin-left: 5%;
+  }
+  h3 {
+    font-size: 35px;
+    font-weight: 200;
+    margin-left: 5%;
+    flex-direction: column;
+  }
 }

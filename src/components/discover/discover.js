@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Artists from "../discover/artists";
 import Nav2 from "../home/nav2";
+// import styles from "./discover.module.scss";
 import styles from "./discover.module.scss";
 
 import Axios from "axios";
@@ -49,9 +50,14 @@ export class discover extends Component {
     return (
       <div>
         <Nav2 />
-        <Link to="/auth/creators">
-          <h1>Artists</h1>
-        </Link>
+        <div className={styles.bar}>
+          <Link className={styles.linkto} to="/discover">
+            <button className={styles.button}>Works</button>
+          </Link>
+          <Link className={styles.linkto} to="/auth/creatorsLogged">
+            <button className={styles.button}>Artists</button>
+          </Link>
+        </div>
         {mapped}
       </div>
     );

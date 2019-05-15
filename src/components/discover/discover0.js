@@ -36,10 +36,12 @@ export class discover extends Component {
                 <h2> Artist: {val.artist}</h2>
                 <h2> Date: {val.date}</h2>
                 <h2 className={styles.emoji}>
-                  <img className={styles.logo} src={logo} />
+                  Likes:
                   <h2 className={styles.circleButton}>{val.likes}</h2>
-                  <StripeBtn />
                 </h2>
+                <div className={styles.payButton}>
+                  <StripeBtn />
+                </div>
               </div>
             </div>
           </div>

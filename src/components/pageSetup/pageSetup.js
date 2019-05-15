@@ -40,6 +40,32 @@ export class pageSetup extends Component {
     );
     this.props.history.push("/auth/displayPage");
   }
+  submitFile = event => {
+    event.preventDefault();
+    const formData = new FormData();
+    console.log(this.state.file);
+    formData.append("file", this.state.file[0]);
+    console.log(formData);
+    axios
+      .post(`/test-upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        this.setState({ image: response.data.Location });
+        // handle your response;
+        console.log(response);
+      })
+      .catch(error => {
+        // handle your error
+        console.log(error);
+      });
+  };
+
+  handleFileUpload = event => {
+    this.setState({ file: event.target.files });
+  };
   render() {
     console.log(
       this.state.img,
@@ -50,10 +76,13 @@ export class pageSetup extends Component {
     return (
       <div>
         <Home />
+
         <form onSubmit={this.handleSubmit}>
           <input
             placeholder="Profile Image"
-            onChange={this.handleChange}
+            label="upload file"
+            type="file"
+            onChange={this.handleFileUpload}
             value={this.state.img}
             name="img"
           />

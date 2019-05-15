@@ -4,6 +4,7 @@ import home from "./components/home/home";
 import discover from "./components/discover/discover";
 import discover0 from "./components/discover/discover0";
 import artists from "./components/discover/artists";
+import artists1 from "./components/discover/artists";
 import Signup from "./components/Signup/Signup";
 import Login from "./components/login/login";
 import pageSetup from "./components/pageSetup/pageSetup";
@@ -28,6 +29,7 @@ export default (
     <Route path="/auth/portfolio/add" component={workAdd} />
     <Route path="/auth/portfolio" component={portfolio} />
     <Route path="/auth/creators" component={artists} />
+    <Route path="/auth/creatorsLogged" component={artists1} />
     <Route path="/loggedIn" component={nav2} />
   </Switch>
 );

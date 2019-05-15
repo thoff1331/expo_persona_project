@@ -125,7 +125,11 @@ export class workAdd extends Component {
               value={this.state.description}
               name="description"
             />
-            <button onClick={this.handleSubmit}>POST</button>
+            <Link to="/auth/portfolio">
+              <button className={styles.post} onClick={this.handleSubmit}>
+                POST
+              </button>
+            </Link>
           </div>
         </div>
       </div>
