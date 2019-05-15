@@ -16,7 +16,7 @@ const addPortfolio = async (req, res) => {
 };
 
 const deleteWork = async (req, res) => {
-  console.log(+req.params.id);
+  // console.log(+req.params.id);
   const db = req.app.get("db");
   const result = await db.delete_works(req.params.id);
 
@@ -25,10 +25,9 @@ const deleteWork = async (req, res) => {
 };
 
 const editPortfolio = (req, res) => {
-  console.log(req.body);
   const { img, title, artist, date, description } = req.body;
   const db = req.app.get("db");
-  db.portfolio_update([img, title, artist, date, description, 75])
+  db.portfolio_update([img, title, artist, date, description, 90])
     .then(info => res.status(200).json(info))
     .catch(err => console.log(err));
 };

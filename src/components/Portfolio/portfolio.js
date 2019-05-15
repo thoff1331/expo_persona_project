@@ -117,12 +117,12 @@ export class portfolio extends Component {
             <button onClick={() => this.props.deleteWork(val.portfolio_id)}>
               X
             </button>
-            <button onClick={this.editPortfolio(val.portfolio_id)}>
+            {/* <button onClick={this.editPortfolio(val.portfolio_id)}>
               Update
-            </button>
+            </button> */}
             {/* <button onClick={this.editWork}>Edit Work</button> */}
 
-            <form className={styles.editWork} onSubmit={this.submitFile}>
+            {/* <form className={styles.editWork} onSubmit={this.submitFile}>
               <input
                 name="img"
                 onChange={this.handleFileUpload}
@@ -137,8 +137,8 @@ export class portfolio extends Component {
                 value={this.setState.title}
                 autoComplete="off"
                 placeholder="title"
-              />
-              <input
+              /> */}
+            {/* <input
                 name="artist"
                 onChange={this.handleChange}
                 value={this.setState.artist}
@@ -159,7 +159,7 @@ export class portfolio extends Component {
                 autoComplete="off"
                 placeholder="description"
               />
-            </form>
+            </form> */}
           </div>
         </div>
       );
