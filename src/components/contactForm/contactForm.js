@@ -33,7 +33,6 @@ export default class Contact extends Component {
     };
 
     axios.post("/api/contact", data).then(this.setState({ button: true }));
-    console.log(data);
   }
 
   render() {
@@ -41,38 +40,40 @@ export default class Contact extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className={styles.parent}>
-        <Home />
-        <div className={styles.contact}>
-          <div className={styles.formform}>
-            <form autocomplete="off" onSubmit={this.handleSubmit}>
-              <h1>Contact Us</h1>
-              <input
-                placeholder="First Name"
-                onChange={this.handleChange}
-                value={this.state.first_name}
-                name="first_name"
-              />
-              <input
-                placeholder="Last Name"
-                onChange={this.handleChange}
-                value={this.state.last_name}
-                name="last_name"
-              />
-              <input
-                placeholder="Email Address"
-                onChange={this.handleChange}
-                value={this.state.email}
-                name="email"
-              />
-              <textarea
-                placeholder="Message"
-                onChange={this.handleChange}
-                value={this.state.message}
-                name="message"
-              />
-              <button>Send</button>
-            </form>
+      <div className="contact-container">
+        <div className={styles.parent}>
+          <Home />
+          <div className={styles.contact}>
+            <div className={styles.formform}>
+              <form autocomplete="off" onSubmit={this.handleSubmit}>
+                <h1>Contact Us</h1>
+                <input
+                  placeholder="First Name"
+                  onChange={this.handleChange}
+                  value={this.state.first_name}
+                  name="first_name"
+                />
+                <input
+                  placeholder="Last Name"
+                  onChange={this.handleChange}
+                  value={this.state.last_name}
+                  name="last_name"
+                />
+                <input
+                  placeholder="Email Address"
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                  name="email"
+                />
+                <textarea
+                  placeholder="Message"
+                  onChange={this.handleChange}
+                  value={this.state.message}
+                  name="message"
+                />
+                <button>Send</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Artists from "../discover/artists";
-import Nav2 from "../home/nav2";
 import Home from "../home/home";
 import styles from "./discover.module.scss";
-import logo from "../pics/like.png";
 import StripeBtn from "../Stripe.js";
 
 import Axios from "axios";
@@ -23,6 +20,20 @@ export class discover extends Component {
       });
     });
   }
+  addLike = id => {
+    Axios.get(`/auth/addLike/${id}`).then(res => {
+      this.setState({
+        works: res.data
+      });
+    });
+  };
+  // pleaseLogIn = () => {
+  //   if (!this.props.username) {
+  //     alert("Please Log In");
+  //   } else {
+  //     this.addLike();
+  //   }
+  // };
 
   render() {
     let mapped = this.state.works.map((val, index) => {
@@ -35,10 +46,10 @@ export class discover extends Component {
                 <h2> Title: {val.title}</h2>
                 <h2> Artist: {val.artist}</h2>
                 <h2> Date: {val.date}</h2>
-                <h2 className={styles.emoji}>
-                  Likes:
-                  <h2 className={styles.circleButton}>{val.likes}</h2>
-                </h2>
+                <h6 onClick={e => this.addLike(val.portfolio_id)}>🔥</h6>
+
+                <h6 className={styles.circleButton}> {val.likes}</h6>
+
                 <div className={styles.payButton}>
                   <StripeBtn />
                 </div>
@@ -51,8 +62,6 @@ export class discover extends Component {
 
     return (
       <div>
-        <Home />
-        {/* <h1>THIS IS WHERE THE WORKS WILL GO</h1> */}
         <div className={styles.creators}>
           <Link className={styles.linkto} to="/discover0">
             <button className={styles.button}>Works</button>
@@ -61,6 +70,7 @@ export class discover extends Component {
             <button className={styles.button}>Artists</button>
           </Link>
         </div>
+        <Home />
         <div className={styles.allMapped}>{mapped}</div>
       </div>
     );

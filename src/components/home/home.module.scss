@@ -2,7 +2,6 @@
   display: flex;
   background: rgb(26, 26, 26);
   flex-direction: row;
-  // text-decoration: none;
   height: 15vh;
   padding-top: 2%;
   justify-content: center;
@@ -18,19 +17,17 @@
 }
 
 .navList {
-  // border: 2px solid rgba(192, 5, 5, 0.541);
   list-style-type: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 40vw;
+  width: 50vw;
   height: 15vh;
   a {
     text-decoration: none;
     a:focus {
       color: blue;
     }
-    // font: white;
   }
   li {
     font-size: 40px;

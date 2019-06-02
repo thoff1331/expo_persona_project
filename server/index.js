@@ -72,21 +72,16 @@ app.get("/auth/discover", discover);
 app.post("/auth/signup", signup);
 app.post("/auth/login", login);
 
-//aboutPage and pageSetup
-
 app.post("/auth/pagesetup", pageSetup);
-// app.get("/auth/displayPage", displayPage);
 app.get("/check/user", checkUser);
 app.get("/auth/displayInfo", displayInfo);
 app.get("/auth/logout", logout);
 app.post("/auth/displayPage", editPage);
-//portfolio
 app.post("/api/portfolio", addPortfolio);
 app.get("/api/portfolio", displayWork);
 app.delete("/api/portfolio/:id", deleteWork);
 app.put("/api/portfolio", editPortfolio);
 app.get("/auth/addLike/:id", addLikes);
-// Contact Form
 app.post("/api/contact", addContactForm);
 
 const uploadFile = (buffer, name, type) => {
@@ -99,8 +94,7 @@ const uploadFile = (buffer, name, type) => {
   };
   return s3.upload(params).promise();
 };
-app.post("/auth/picture", (request, response) => {
-  console.log("hitt");
+app.post("/auth/addProfilePic", (request, response) => {
   const form = new multiparty.Form();
   form.parse(request, async (error, fields, files) => {
     if (error) throw new Error(error);
@@ -111,13 +105,13 @@ app.post("/auth/picture", (request, response) => {
       const timestamp = Date.now().toString();
       const fileName = `bucketFolder/${timestamp}-lg`;
       const data = await uploadFile(buffer, fileName, type);
-      console.log(`data ${data}`);
       return response.status(200).send(data);
     } catch (error) {
       return response.status(400).send(error);
     }
   });
 });
+
 const configureRoutes = require("./routes");
 configureRoutes(app);
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import home from "./components/home/home";
+import Home from "./components/home/home";
 import discover from "./components/discover/discover";
 import discover0 from "./components/discover/discover0";
 import artists from "./components/discover/artists";
@@ -11,7 +11,6 @@ import pageSetup from "./components/pageSetup/pageSetup";
 import displayPage from "./components/displayPage1/displayPage";
 import portfolio from "./components/Portfolio/portfolio";
 import workAdd from "./components/Portfolio/workAdd";
-import nav2 from "./components/home/nav2";
 import welcome from "./components/welcome/welcome";
 import Contact from "./components/contactForm/contactForm";
 
@@ -30,6 +29,6 @@ export default (
     <Route path="/auth/portfolio" component={portfolio} />
     <Route path="/auth/creators" component={artists} />
     <Route path="/auth/creatorsLogged" component={artists1} />
-    <Route path="/loggedIn" component={nav2} />
+    <Route path="/loggedIn" component={Home} />
   </Switch>
 );

@@ -33,7 +33,6 @@ export function logout() {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case `${SIGN_UP}_FULFILLED`:
-      console.log(action.payload);
       return {
         ...state,
         username: action.payload.data.username

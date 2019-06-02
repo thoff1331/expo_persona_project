@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../ducks/auth";
 import Home from "../home/home";
-import nav2 from "../home/nav2";
 import styles from "./../login/login.module.scss";
 
 export class Login extends Component {
@@ -20,8 +19,6 @@ export class Login extends Component {
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state.username);
-    console.log(this.state.password);
   }
 
   handleSubmit(e) {

@@ -43,9 +43,7 @@ export class pageSetup extends Component {
   submitFile = event => {
     event.preventDefault();
     const formData = new FormData();
-    console.log(this.state.file);
     formData.append("file", this.state.file[0]);
-    console.log(formData);
     axios
       .post(`/test-upload`, formData, {
         headers: {
@@ -54,11 +52,8 @@ export class pageSetup extends Component {
       })
       .then(response => {
         this.setState({ image: response.data.Location });
-        // handle your response;
-        console.log(response);
       })
       .catch(error => {
-        // handle your error
         console.log(error);
       });
   };
@@ -67,12 +62,6 @@ export class pageSetup extends Component {
     this.setState({ file: event.target.files });
   };
   render() {
-    console.log(
-      this.state.img,
-      this.state.name,
-      this.state.bio,
-      this.state.medium
-    );
     return (
       <div>
         <Home />

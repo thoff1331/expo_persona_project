@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Nav2 from "../home/nav2";
 import { connect } from "react-redux";
 import { addWork, deleteWork } from "../../ducks/portfoliolist";
 import axios from "axios";
@@ -7,6 +6,7 @@ import styles from "./workAdd.module.scss";
 import { displayPage } from "../displayPage1/displayPage";
 import { Link } from "react-router-dom";
 import { validate } from "@babel/types";
+import { Home } from "../home/home";
 
 export class workAdd extends Component {
   constructor() {
@@ -21,11 +21,9 @@ export class workAdd extends Component {
       showInput: true,
       editForm: true
     };
-    // this.handleFileUpload = this.handleFileUpload.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.editPortfolio = this.editPortfolio.bind(this);
   }
   handleSubmit(e) {
     this.props
@@ -54,45 +52,17 @@ export class workAdd extends Component {
       this.setState({ showInput: false });
     }
   }
-  // handleFileUpload(e) {
-  //   this.setState({ file: e.target.files });
-  //   console.log(e.target);
-  // }
-  // submitFile = event => {
-  //   event.preventDefault();
-  //   console.log("hitt");
-  //   const formData = new FormData();
-  //   formData.append("file", this.state.file[0]);
-  //   axios
-  //     .post("/auth/picture", formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data"
-  //       }
-  //     })
-  //     .then(response => {
-  //       console.log(response);
-  //       this.setState(
-  //         {
-  //           img: response.data.Location
-  //         },
-  //         () => this.handleSubmit()
-  //       );
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
+
   render() {
-    // console.log(response.data.Location);
     return (
       <div>
-        <Nav2 />
+        <Home />
 
         <div className={styles.workInputParent}>
           <div className={styles.workInput}>
             <label>Image</label>
             <input
-              placeHolder="Image"
+              placeHolder="Image URL"
               onChange={this.handleChange}
               value={this.state.name}
               name="img"

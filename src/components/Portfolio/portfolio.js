@@ -5,7 +5,7 @@ import axios from "axios";
 import styles from "./portfolio.module.scss";
 import { displayPage } from "../displayPage1/displayPage";
 import { Link } from "react-router-dom";
-import Nav2 from "../home/nav2";
+import Home from "../home/home";
 
 export class portfolio extends Component {
   constructor() {
@@ -38,29 +38,11 @@ export class portfolio extends Component {
         description: this.state.description
       })
       .then(res => {
-        console.log("hittem");
         this.setState({
           displayWork: res.data
         });
       });
   }
-
-  // handleSubmit(e) {
-  //   this.props
-  //     .addWork(
-  //       this.state.img,
-  //       this.state.title,
-  //       this.state.artist,
-  //       this.state.date,
-  //       this.state.description
-  //     )
-  //     .then(res => {
-  //       this.setState({
-  //         displayWork: res.data,
-  //         showInput: false
-  //       });
-  //     });
-  //  }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -77,11 +59,9 @@ export class portfolio extends Component {
   };
   handleFileUpload(e) {
     this.setState({ file: e.target.files });
-    console.log(e.target);
   }
   submitFile = event => {
     event.preventDefault();
-    console.log("hitt");
     const formData = new FormData();
     formData.append("file", this.state.file[0]);
     axios
@@ -91,7 +71,6 @@ export class portfolio extends Component {
         }
       })
       .then(response => {
-        console.log(response);
         this.setState(
           {
             img: response.data.Location
@@ -104,7 +83,6 @@ export class portfolio extends Component {
       });
   };
   render() {
-    console.log(this.state.displayWork);
     const mapped = this.props.works.map((val, index) => {
       return (
         <div key={index} className={styles.background}>
@@ -117,56 +95,13 @@ export class portfolio extends Component {
             <button onClick={() => this.props.deleteWork(val.portfolio_id)}>
               X
             </button>
-            {/* <button onClick={this.editPortfolio(val.portfolio_id)}>
-              Update
-            </button> */}
-            {/* <button onClick={this.editWork}>Edit Work</button> */}
-
-            {/* <form className={styles.editWork} onSubmit={this.submitFile}>
-              <input
-                name="img"
-                onChange={this.handleFileUpload}
-                // value={this.setState.img}
-                autoComplete="off"
-                placeholder="image"
-                type="file"
-              />
-              <input
-                name="title"
-                onChange={this.handleChange}
-                value={this.setState.title}
-                autoComplete="off"
-                placeholder="title"
-              /> */}
-            {/* <input
-                name="artist"
-                onChange={this.handleChange}
-                value={this.setState.artist}
-                autoComplete="off"
-                placeholder="artist"
-              />
-              <input
-                name="date"
-                onChange={this.handleChange}
-                value={this.setState.date}
-                autoComplete="off"
-                placeholder="date"
-              />
-              <input
-                name="description"
-                onChange={this.handleChange}
-                value={this.setState.description}
-                autoComplete="off"
-                placeholder="description"
-              />
-            </form> */}
           </div>
         </div>
       );
     });
     return (
       <div>
-        <Nav2 />
+        <Home />
         <nav className={styles.addWork}>
           <Link className={styles.Link} to="/auth/displayPage">
             <h1 className={styles.navButtons}>PROFILE</h1>

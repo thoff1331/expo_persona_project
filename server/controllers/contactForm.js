@@ -39,7 +39,6 @@ module.exports = {
         console.log("Email Sent");
       }
     });
-    console.log(req.body);
     res.sendStatus(200);
   }
 };

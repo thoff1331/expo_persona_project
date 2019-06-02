@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import Home from "../home/home";
-import Nav2 from "../home/nav2";
 import Home from "../home/home";
 
-// import styles from "./artists.module.scss";
 import styles from "./discover.module.scss";
 import style from "../discover/artists.module.scss";
 
@@ -25,7 +22,6 @@ export class artists extends Component {
     });
   }
   render() {
-    console.log(this.state.creators);
     let mapped = this.state.creators.map((val, index) => {
       return (
         <div key={index}>
@@ -34,7 +30,6 @@ export class artists extends Component {
               <img src={val.img} />
               <h3>Artist: {val.name}</h3>
               <h3>Practice: {val.medium}</h3>
-              {/* <h3>Bio: {val.bio}</h3> */}
             </div>
           </div>
         </div>
@@ -42,8 +37,6 @@ export class artists extends Component {
     });
     return (
       <div>
-        <Home />
-
         <div className={styles.creators}>
           <Link className={styles.linkto} to="/discover0">
             <button className={styles.button}>Works</button>
@@ -52,6 +45,7 @@ export class artists extends Component {
             <button className={styles.button}>Artists</button>
           </Link>
         </div>
+        <Home />
         <div className={styles.allMapped}>{mapped}</div>
       </div>
     );

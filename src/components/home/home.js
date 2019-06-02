@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { logout } from "../../ducks/auth";
 import Axios from "axios";
 import logo from "./../../components/pics/logo.png";
-export class home extends Component {
+export class Home extends Component {
   constructor() {
     super();
     this.state = {
@@ -21,14 +21,7 @@ export class home extends Component {
     });
   }
 
-  //   Axios.get("/auth/logout").then(res => {
-  //     this.setState({
-  //       loggedIn: false
-  //     });
-  //   });
-  // }
   render() {
-    console.log(this.state.loggedIn);
     return (
       <div className={styles.title}>
         <div className={styles.logo}>
@@ -41,6 +34,9 @@ export class home extends Component {
             <Link to="/discover0">
               <li className={styles.discover}>Discover</li>
             </Link>
+            <Link to="/auth/displayPage">
+              <li> Profile</li>
+            </Link>
             <Link to="/login">
               <li className={styles.login}>Login</li>
             </Link>
@@ -49,6 +45,9 @@ export class home extends Component {
             </Link>
             <Link to="/Contact">
               <li className={styles.contact}>Contact</li>
+            </Link>
+            <Link to="/login">
+              <li onClick={this.logout}> Logout</li>
             </Link>
           </ul>
         </nav>
@@ -60,4 +59,4 @@ const mapStateProps = reduxState => reduxState;
 export default connect(
   mapStateProps,
   { logout }
-)(home);
+)(Home);

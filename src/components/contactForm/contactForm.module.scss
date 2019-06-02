@@ -6,13 +6,9 @@
   margin-top: 8%;
   // background: url("../pics/pattern11.jpg");
 }
-// .formform {
-//   background: url("../pics/pattern11.jpg");
-// }
-// .parent {
-//   background: solid black;
-// }
-
+.contact-container {
+  background: url("../pics/pattern11.jpg");
+}
 form {
   display: flex;
   flex-direction: column;
@@ -22,6 +18,8 @@ form {
   height: 50vh;
   width: 40vw;
   border: 1px solid black;
+  background: whitesmoke;
+  opacity: 0.6;
   input {
     width: 30vw;
     height: 5vh;

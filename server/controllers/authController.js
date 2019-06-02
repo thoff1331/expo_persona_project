@@ -35,7 +35,6 @@ const login = async (req, res) => {
         username: results[0].username,
         expo_id: results[0].expo_id
       };
-      console.log(results);
       res.json(req.session.user);
     } else {
       res.status(403).json("Error: Wrong password");
@@ -45,9 +44,7 @@ const login = async (req, res) => {
   }
 };
 const infoSetup = async (req, res) => {
-  // console.log("ID: ", req.session.user.expo_id);
   const db = req.app.get("db");
-  // console.log(req.body.img);
   const { img, name, bio, medium } = req.body;
   const result = await db
     .pageSetup([img, name, bio, medium, req.session.user.expo_id])
@@ -60,29 +57,22 @@ const infoSetup = async (req, res) => {
 
 const checkUser = async (req, res) => {
   const db = req.app.get("db");
-  // console.log("hit");
-  //expo id on session for sql statement
-  // console.log(req.session);
+
   let user = req.session.user;
   if (!user) {
     user = { img: "", name: "", bio: "", medium: "" };
-    //Write a SQL Query that gets all the info you need and takes in user
 
-    //Send that data back to the front end
     res.json(user);
   } else {
-    // console.log(user);
     let result = await db.getUserInfo(user.expo_id);
-    // console.log(result);
     res.status(200).json(result[0]);
   }
 };
 const pageSetup = async (req, res) => {
   count++;
-  //console.log("COUNT ****: ", count);
   const db = req.app.get("db");
   const { img, name, bio, medium } = req.body;
-  //console.log("Req.body: ", req.body);
+
   const result = await db
     .pageSetup([img, name, bio, medium, req.session.user.username])
     .catch(err => {
@@ -93,37 +83,28 @@ const pageSetup = async (req, res) => {
 };
 
 const displayInfo = (req, res) => {
-  console.log(+req.session.user.expo_id);
   const db = req.app.get("db");
   db.display_info(+req.session.user.expo_id).then(info =>
     res.status(200).json(info)
   );
 };
 const logout = (req, res) => {
-  console.log("logged out");
   req.session.destroy();
   res.sendStatus(200).json("hey");
 };
 
 //edit info function
 const editPage = (req, res) => {
-  console.log(req.session.user.username);
   const { img, name, bio, medium } = req.body;
   const db = req.app.get("db");
   db.update_info([img, name, bio, medium, +req.session.user.expo_id])
     .then(info => res.status(200).json(info))
     .catch(err => console.log(err));
 };
-// const displayPage = (req, res) => {
-//   console.log("hit");
-//   const db = req.app.get("db");
-//   db.display_page().then(info => res.status(200).json(info));
-// };
 
 module.exports = {
   signup,
   login,
-  // displayPage,
   infoSetup,
   checkUser,
   pageSetup,

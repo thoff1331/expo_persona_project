@@ -3,10 +3,8 @@ import { connect } from "react-redux";
 import { checkUser, updateUser } from "../../ducks/userInfo";
 import { getWork } from "../../ducks/portfoliolist";
 import axios from "axios";
-import { tsConstructorType } from "@babel/types";
 import styles from "./displayPage.module.scss";
 import Home from "../home/home";
-import Nav2 from "../home/nav2";
 import { Link } from "react-router-dom";
 
 export class displayPage extends Component {
@@ -20,63 +18,54 @@ export class displayPage extends Component {
       displayPage: [],
       showInput: false
     };
-    // this.logout = this.logout.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     axios.get("/auth/displayInfo").then(res => {
-      console.log(res.data);
       this.setState({
         displayPage: res.data
       });
     });
     this.props.getWork();
   }
-  handleSubmit(e) {
-    console.log("hello");
+  handleSubmit = e => {
     e.preventDefault();
     axios
       .post("/auth/displayPage", {
-        //is this id or expo_id?
-
         img: this.state.img,
         name: this.state.name,
         bio: this.state.bio,
         medium: this.state.medium
       })
       .then(res => {
-        console.log("hitt");
         this.setState({
           displayPage: res.data,
           showInput: false
         });
       });
     this.setState({
-      img: "",
+      img: " ",
       name: "",
       bio: "",
       medium: ""
     });
     this.handleClick();
-  }
-  handleChange(e) {
+  };
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
-  handleClick(e) {
+  };
+  handleClick = e => {
     if (!this.state.showInput) {
       this.setState({ showInput: true });
     } else {
       this.setState({ showInput: false });
     }
-  }
+  };
+
   render() {
-    console.log(this.state.displayPage);
-    // console.log(this.props.img);
+    console.log(this.state);
     const mapped = this.state.displayPage.map((val, index) => {
       return (
         <div className={styles.mainProfile}>
@@ -94,9 +83,6 @@ export class displayPage extends Component {
               <Link className={styles.linkto} to="/auth/portfolio/add">
                 <button className={styles.navButtons}>Add Work</button>
               </Link>{" "}
-              {/* <Link className={styles.linkto} to="/contact">
-                <button className={styles.navButtons}>Contact</button>
-              </Link> */}
             </div>
             <h1>Artist:</h1>
             <p className={styles.name}>{val.name}</p>
@@ -110,48 +96,46 @@ export class displayPage extends Component {
     });
     return (
       <div>
-        <Nav2 />
+        <Home />
         <div>
           {mapped}
           {this.state.showInput ? (
-            <div
-              onSubmit={this.handleSubmit}
-              className={styles.editForm}
-              autoComplete="off"
-            >
+            <div onSubmit={this.handleSubmit} className={styles.editForm}>
               <img src={this.state.img} className={styles.picEdit} />
-              <label>Profile Pic</label>
-              <input
-                onChange={this.handleChange}
-                name="img"
-                value={this.state.img}
-                autoComplete="off"
-              />
-              <label>Name</label>
-              <input
-                onChange={this.handleChange}
-                name="name"
-                value={this.state.name}
-                autoComplete="off"
-              />
-              <label>Medium</label>
-              <input
-                onChange={this.handleChange}
-                name="medium"
-                value={this.state.medium}
-                autoComplete="off"
-              />
-              <label>Bio</label>
-              <textarea
-                onChange={this.handleChange}
-                name="bio"
-                value={this.state.bio}
-                autoComplete="off"
-              />
-              <button onClick={this.handleSubmit}>Submit</button>
+              <form className="edit-profile-form" onSubmit={this.submitFile}>
+                <label>Profile Pic</label>
+                <input
+                  onChange={this.handleChange}
+                  name="img"
+                  value={this.state.img}
+                  autoComplete="off"
+                  placeholder="Image Url"
+                />
+                <label>Name</label>
+                <input
+                  onChange={this.handleChange}
+                  name="name"
+                  value={this.state.name}
+                  autoComplete="off"
+                />
+                <label>Medium</label>
+                <input
+                  onChange={this.handleChange}
+                  name="medium"
+                  value={this.state.medium}
+                  autoComplete="off"
+                />
+                <label>Bio</label>
+                <textarea
+                  onChange={this.handleChange}
+                  name="bio"
+                  value={this.state.bio}
+                  autoComplete="off"
+                />
+                <button onClick={this.handleSubmit}>Submit</button>
+              </form>
             </div>
           ) : null}
-          {/* <Portfolio /> */}
         </div>
       </div>
     );
@@ -159,7 +143,6 @@ export class displayPage extends Component {
 }
 
 const mapStateProps = reduxState => {
-  // console.log(reduxState.userInfo);
   return {
     img: reduxState.userInfo.img,
     name: reduxState.userInfo.name,

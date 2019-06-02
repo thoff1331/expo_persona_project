@@ -33,7 +33,6 @@ export function deleteWork(id) {
   };
 }
 export default function reducer(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case `${ADD_WORK}_FULFILLED`:
       return {
